@@ -12,6 +12,7 @@ export function Nav() {
     { href: "#protected-work", label: t.nav.protected },
     { href: "#experience", label: t.nav.experience },
     { href: "#technologies", label: t.nav.technologies },
+    { href: "#certifications", label: t.nav.certifications },
     { href: "#about", label: t.nav.about },
     { href: "#contact", label: t.nav.contact },
   ];

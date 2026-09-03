@@ -6,6 +6,7 @@ export interface Translations {
     protected: string;
     experience: string;
     technologies: string;
+    certifications: string;
     about: string;
     contact: string;
   };
@@ -36,6 +37,9 @@ export interface Translations {
   technologies: {
     heading: string;
   };
+  certifications: {
+    heading: string;
+  };
   about: {
     heading: string;
     body: string[];
@@ -46,7 +50,6 @@ export interface Translations {
     available: string;
     email: string;
     linkedin: string;
-    github: string;
     downloadCv: string;
   };
   footer: {
@@ -61,6 +64,7 @@ export const translations: Record<Locale, Translations> = {
       protected: "Public Sector",
       experience: "Experience",
       technologies: "Technologies",
+      certifications: "Certifications",
       about: "About",
       contact: "Contact",
     },
@@ -93,6 +97,9 @@ export const translations: Record<Locale, Translations> = {
     technologies: {
       heading: "Technologies",
     },
+    certifications: {
+      heading: "Certifications",
+    },
     about: {
       heading: "About",
       body: [
@@ -106,7 +113,6 @@ export const translations: Record<Locale, Translations> = {
       available: "Available from October 2026",
       email: "Email",
       linkedin: "LinkedIn",
-      github: "GitHub",
       downloadCv: "Download CV",
     },
     footer: {
@@ -119,6 +125,7 @@ export const translations: Record<Locale, Translations> = {
       protected: "Öffentlicher Sektor",
       experience: "Erfahrung",
       technologies: "Technologien",
+      certifications: "Zertifikate",
       about: "Über mich",
       contact: "Kontakt",
     },
@@ -151,6 +158,9 @@ export const translations: Record<Locale, Translations> = {
     technologies: {
       heading: "Technologien",
     },
+    certifications: {
+      heading: "Zertifikate",
+    },
     about: {
       heading: "Über mich",
       body: [
@@ -164,7 +174,6 @@ export const translations: Record<Locale, Translations> = {
       available: "Verfügbar ab Oktober 2026",
       email: "E-Mail",
       linkedin: "LinkedIn",
-      github: "GitHub",
       downloadCv: "Lebenslauf herunterladen",
     },
     footer: {

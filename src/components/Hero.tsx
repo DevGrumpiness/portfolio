@@ -3,7 +3,7 @@
 import { Download, Mail } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { siteConfig } from "@/config/site";
-import { GithubIcon, LinkedinIcon } from "./icons";
+import { LinkedinIcon } from "./icons";
 
 export function Hero() {
   const { t } = useLanguage();
@@ -41,15 +41,6 @@ export function Hero() {
           </a>
 
           <div className="ml-1 flex items-center gap-1">
-            <a
-              href={siteConfig.links.github}
-              aria-label="GitHub"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full p-2.5 text-foreground/60 transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <GithubIcon width={18} height={18} />
-            </a>
             <a
               href={siteConfig.links.linkedin}
               aria-label="LinkedIn"

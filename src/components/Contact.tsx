@@ -3,7 +3,7 @@
 import { Download, Mail } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { siteConfig } from "@/config/site";
-import { GithubIcon, LinkedinIcon } from "./icons";
+import { LinkedinIcon } from "./icons";
 
 export function Contact() {
   const { t } = useLanguage();
@@ -35,15 +35,6 @@ export function Contact() {
             >
               <LinkedinIcon width={16} height={16} aria-hidden />
               {t.contact.linkedin}
-            </a>
-            <a
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-foreground/40"
-            >
-              <GithubIcon width={16} height={16} aria-hidden />
-              {t.contact.github}
             </a>
             <a
               href={siteConfig.links.cv}

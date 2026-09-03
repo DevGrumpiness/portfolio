@@ -7,11 +7,11 @@ export const siteConfig = {
   role: "Frontend & Fullstack Developer",
   location: "Münster, Germany",
   availableFrom: "October 2026",
-  email: "hello@example.com", // TODO: replace with real contact email
+  email: "jbmj@outlook.de",
   siteUrl: "https://example.com", // TODO: replace with the deployed domain
   links: {
-    github: "https://github.com/your-github-handle", // TODO: replace
-    linkedin: "https://www.linkedin.com/in/your-linkedin-handle", // TODO: replace
-    cv: "/cv/Jose-Guerrero-Vazquez-CV.pdf", // TODO: drop the real CV PDF here
+    linkedin:
+      "https://www.linkedin.com/in/jos%C3%A9-benjamin-m-j-guerrero-vazquez-30369b14b/",
+    cv: "/cv/Jose-Guerrero-Vazquez-CV.pdf",
   },
 } as const;
