@@ -3,7 +3,6 @@ export type Locale = "en" | "de";
 export interface Translations {
   nav: {
     work: string;
-    protected: string;
     experience: string;
     technologies: string;
     certifications: string;
@@ -12,9 +11,9 @@ export interface Translations {
   };
   hero: {
     title: string;
-    stack: string;
     description: string;
     viewProjects: string;
+    github: string;
     downloadCv: string;
   };
   work: {
@@ -24,12 +23,14 @@ export interface Translations {
     tech: string;
     visit: string;
     code: string;
-  };
-  protectedWork: {
-    heading: string;
-    subheading: string;
+    featuredBadge: string;
+    liveDemo: string;
+    architecture: string;
+    deployedNote: string;
+    confidentialHeading: string;
+    confidentialSubheading: string;
     sources: string;
-    tech: string;
+    otherHeading: string;
   };
   experience: {
     heading: string;
@@ -61,7 +62,6 @@ export const translations: Record<Locale, Translations> = {
   en: {
     nav: {
       work: "Work",
-      protected: "Public Sector",
       experience: "Experience",
       technologies: "Technologies",
       certifications: "Certifications",
@@ -69,33 +69,37 @@ export const translations: Record<Locale, Translations> = {
       contact: "Contact",
     },
     hero: {
-      title: "Frontend & Fullstack Developer",
-      stack: "React · Vue · TypeScript · JavaScript",
+      title:
+        "Web Developer building production-ready web applications and AI-powered tools.",
       description:
-        "Web developer with many years of professional experience across frontend and fullstack applications. Based in Münster, Germany, available for new opportunities from October 2026.",
+        "I build with React, Vue, TypeScript and Next.js, and I ship practical AI integrations — from voice agents to backend automation — as working systems, not demos.",
       viewProjects: "View Projects",
+      github: "GitHub",
       downloadCv: "Download CV",
     },
     work: {
       heading: "Selected Work",
-      subheading: "Production projects I designed and built end to end.",
+      subheading:
+        "Production projects and AI systems I designed, built and deployed end to end.",
       role: "Role",
       tech: "Tech",
       visit: "Visit project",
       code: "View code",
-    },
-    protectedWork: {
-      heading: "Protected / Public-Sector Work",
-      subheading:
+      featuredBadge: "Featured project",
+      liveDemo: "Live Demo",
+      architecture: "Architecture",
+      deployedNote: "Deployed and running — not a mockup.",
+      confidentialHeading: "Public Sector & Confidential Work",
+      confidentialSubheading:
         "Selected projects cannot be presented publicly due to contractual and security requirements. Publicly documented information and non-sensitive technical context are shown where possible.",
       sources: "Public sources",
-      tech: "Tech",
+      otherHeading: "Other Projects",
     },
     experience: {
       heading: "Experience",
     },
     technologies: {
-      heading: "Technologies",
+      heading: "Core Stack",
     },
     certifications: {
       heading: "Certifications",
@@ -122,7 +126,6 @@ export const translations: Record<Locale, Translations> = {
   de: {
     nav: {
       work: "Projekte",
-      protected: "Öffentlicher Sektor",
       experience: "Erfahrung",
       technologies: "Technologien",
       certifications: "Zertifikate",
@@ -130,33 +133,37 @@ export const translations: Record<Locale, Translations> = {
       contact: "Kontakt",
     },
     hero: {
-      title: "Frontend- & Fullstack-Entwickler",
-      stack: "React · Vue · TypeScript · JavaScript",
+      title:
+        "Webentwickler für produktionsreife Webanwendungen und KI-gestützte Tools.",
       description:
-        "Webentwickler mit langjähriger Berufserfahrung in Frontend- und Fullstack-Anwendungen. Ansässig in Münster, verfügbar für neue Projekte ab Oktober 2026.",
+        "Ich entwickle mit React, Vue, TypeScript und Next.js und setze praxisnahe KI-Integrationen um — von Sprachagenten bis zur Backend-Automatisierung — als funktionierende Systeme, nicht als Demos.",
       viewProjects: "Projekte ansehen",
+      github: "GitHub",
       downloadCv: "Lebenslauf herunterladen",
     },
     work: {
       heading: "Ausgewählte Projekte",
-      subheading: "Produktivprojekte, die ich vollständig konzipiert und umgesetzt habe.",
+      subheading:
+        "Produktivprojekte und KI-Systeme, die ich vollständig konzipiert, gebaut und ausgerollt habe.",
       role: "Rolle",
       tech: "Tech",
       visit: "Projekt ansehen",
       code: "Code ansehen",
-    },
-    protectedWork: {
-      heading: "Verdeckte Referenzen / Öffentlicher Sektor",
-      subheading:
+      featuredBadge: "Vorzeigeprojekt",
+      liveDemo: "Live-Demo",
+      architecture: "Architektur",
+      deployedNote: "Live im Einsatz — kein Mockup.",
+      confidentialHeading: "Öffentlicher Sektor & vertrauliche Projekte",
+      confidentialSubheading:
         "Ausgewählte Projekte können aus vertraglichen und sicherheitsrelevanten Gründen nicht öffentlich gezeigt werden. Öffentlich dokumentierte Informationen und unkritischer technischer Kontext werden, soweit möglich, dargestellt.",
       sources: "Öffentliche Quellen",
-      tech: "Tech",
+      otherHeading: "Weitere Projekte",
     },
     experience: {
       heading: "Erfahrung",
     },
     technologies: {
-      heading: "Technologien",
+      heading: "Kern-Stack",
     },
     certifications: {
       heading: "Zertifikate",

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 const title = "José Guerrero Vazquez | Frontend & Fullstack Developer";
 const description =
-  "Frontend & Fullstack Developer specialising in React, Vue and TypeScript. Based in Münster, Germany, building production web applications.";
+  "Web Developer specialising in React, Vue, TypeScript and Next.js, with practical experience building AI-powered automation tools. Based in Münster, Germany.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),

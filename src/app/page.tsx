@@ -1,7 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { SelectedWork } from "@/components/SelectedWork";
-import { ProtectedWork } from "@/components/ProtectedWork";
+import { Work } from "@/components/Work";
 import { Experience } from "@/components/Experience";
 import { Technologies } from "@/components/Technologies";
 import { Certifications } from "@/components/Certifications";
@@ -15,8 +14,7 @@ export default function Home() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <SelectedWork />
-        <ProtectedWork />
+        <Work />
         <Experience />
         <Technologies />
         <Certifications />

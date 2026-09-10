@@ -48,3 +48,14 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.architecture-flow-line {
+  stroke-dasharray: 5 6;
+  animation: architecture-flow 1.4s linear infinite;
+}
+
+@keyframes architecture-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}

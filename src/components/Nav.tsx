@@ -9,7 +9,6 @@ export function Nav() {
 
   const items: { href: string; label: string }[] = [
     { href: "#work", label: t.nav.work },
-    { href: "#protected-work", label: t.nav.protected },
     { href: "#experience", label: t.nav.experience },
     { href: "#technologies", label: t.nav.technologies },
     { href: "#certifications", label: t.nav.certifications },
