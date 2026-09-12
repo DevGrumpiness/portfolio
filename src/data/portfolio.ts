@@ -100,7 +100,7 @@ export const projects: Project[] = [
     description:
       "Innovative digital prototypes for public-sector organizations.",
     image: "/portfolio/lynx-confidential.webp",
-    tags: ["Vue", "TypeScript", "Keycloak", "Docker"],
+    tags: ["Vue", "TypeScript", "Keycloak", "Docker", "E2E", "CI/CD", "Vite", "UX"],
     confidential: true,
     linkLabel: "Project details available on request.",
     variant: "default",
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     image: "/portfolio/casa-menu.webp",
     secondaryImage: "/portfolio/casa-menu-carte.webp",
     backdropImage: "/portfolio/casa-menu-carte.webp",
-    tags: ["Digital Menu", "Management", "Mobile-first"],
+    tags: ["Vue", "Digital Menu", "Management", "Mobile-first", "UX", "SEO"],
     href: "https://menu.casavazquez.de",
     linkLabel: "Open digital menu",
     variant: "menu",

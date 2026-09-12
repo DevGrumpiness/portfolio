@@ -87,11 +87,6 @@ export const publicProjects: Project[] = [
   },
 ];
 
-/**
- * Public-sector and confidential reference work. Live demos/screenshots are
- * intentionally omitted — details are limited to what is publicly
- * documented or otherwise not covered by contractual/NDA restrictions.
- */
 export const confidentialProjects: Project[] = [
   {
     slug: "lynx",
