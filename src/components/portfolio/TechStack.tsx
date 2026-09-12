@@ -10,7 +10,7 @@ export default function TechStack() {
             <p className="eyebrow">Tech Stack</p>
             <h2>Tools & Technologies</h2>
           </div>
-          <p>A pragmatic stack for modern web development and AI integration.</p>
+          <p>A pragmatic stack for modern web development and AI integration, continuously adapting to new challenges.</p>
         </div>
         <div className="tech-strip" data-reveal>
           {stack.map(([name, mark], index) => (

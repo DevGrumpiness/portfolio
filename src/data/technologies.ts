@@ -13,5 +13,6 @@ export const coreStack: string[] = [
   "Docker",
   "n8n",
   "Git",
+  "Docker",
 ];
 
