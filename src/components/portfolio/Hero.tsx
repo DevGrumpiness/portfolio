@@ -33,7 +33,7 @@ export default function Hero({
             real-world use cases, clean code and measurable impact.
           </p>
           <div className="button-row">
-            <a className="button button-primary" href="#projects">
+            <a className="button button-primary" href="#casa-ai">
               View my work <Arrow />
             </a>
             <a
