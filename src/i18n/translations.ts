@@ -85,7 +85,7 @@ export const translations: Record<Locale, Translations> = {
       tech: "Tech",
       visit: "Visit project",
       code: "View code",
-      featuredBadge: "Featured project",
+      featuredBadge: "Latest project",
       liveDemo: "Live Demo",
       architecture: "Architecture",
       deployedNote: "Deployed and running — not a mockup.",

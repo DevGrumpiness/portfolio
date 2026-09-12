@@ -30,7 +30,7 @@ export default function CasaAiFeatured() {
     <section id="casa-ai" className="section section-featured">
       <div className="page-width featured-grid">
         <div className="section-copy reveal-left" data-reveal>
-          <p className="eyebrow">Featured Project</p>
+          <p className="eyebrow">Latest Project</p>
           <h2>Casa AI Agent</h2>
           <p className="lead blue">
             AI-powered voice reservation system for a real hospitality business.
