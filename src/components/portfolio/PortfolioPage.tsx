@@ -17,16 +17,10 @@ export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState("home");
   const heroRef = useRef<HTMLElement | null>(null);
   const footerRef = useRef<HTMLElement | null>(null);
-  const projectsRef = useRef<HTMLElement | null>(null);
-  const projectsViewportRef = useRef<HTMLDivElement | null>(null);
-  const projectsTrackRef = useRef<HTMLDivElement | null>(null);
 
   usePortfolioEffects({
     heroRef,
     footerRef,
-    projectsRef,
-    projectsViewportRef,
-    projectsTrackRef,
     setActiveSection,
   });
 
@@ -38,11 +32,7 @@ export default function PortfolioPage() {
       <main>
         <Hero sectionRef={heroRef} />
         <CasaAiFeatured />
-        <Projects
-          sectionRef={projectsRef}
-          viewportRef={projectsViewportRef}
-          trackRef={projectsTrackRef}
-        />
+        <Projects />
         <TechStack />
         <Experience />
         <AiData />

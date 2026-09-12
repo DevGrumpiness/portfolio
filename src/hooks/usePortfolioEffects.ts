@@ -1,24 +1,17 @@
 "use client";
 
 import { useEffect, type RefObject } from "react";
-import styles from "@/app/projects-scroll.module.css";
 import { sections } from "@/data/portfolio";
 
 type PortfolioEffectsOptions = {
   heroRef: RefObject<HTMLElement | null>;
   footerRef: RefObject<HTMLElement | null>;
-  projectsRef: RefObject<HTMLElement | null>;
-  projectsViewportRef: RefObject<HTMLDivElement | null>;
-  projectsTrackRef: RefObject<HTMLDivElement | null>;
   setActiveSection: (sectionId: string) => void;
 };
 
 export function usePortfolioEffects({
   heroRef,
   footerRef,
-  projectsRef,
-  projectsViewportRef,
-  projectsTrackRef,
   setActiveSection,
 }: PortfolioEffectsOptions) {
   useEffect(() => {
@@ -27,6 +20,7 @@ export function usePortfolioEffects({
     ).matches;
 
     const reveals = document.querySelectorAll<HTMLElement>("[data-reveal]");
+
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -36,149 +30,163 @@ export function usePortfolioEffects({
           }
         });
       },
-      { threshold: 0.16 },
-    );
-
-    reveals.forEach((node) => revealObserver.observe(node));
-
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible?.target.id) setActiveSection(visible.target.id);
-      },
       {
-        rootMargin: "-30% 0px -55% 0px",
-        threshold: [0, 0.15, 0.4, 0.7],
+        threshold: 0.16,
       },
     );
 
-    sections.forEach(({ id }) => {
-      const node = document.getElementById(id);
-      if (node) sectionObserver.observe(node);
+    reveals.forEach((node) => {
+      revealObserver.observe(node);
     });
 
-    let frame = 0;
+    const updateActiveSection = () => {
+      const contact = document.getElementById("contact");
+
+      if (contact) {
+        const contactRect = contact.getBoundingClientRect();
+
+        const isAtPageBottom =
+          window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight - 4;
+
+        const contactHasEnteredFocus =
+          contactRect.top <= window.innerHeight * 0.52 &&
+          contactRect.bottom > 0;
+
+        if (isAtPageBottom || contactHasEnteredFocus) {
+          setActiveSection("contact");
+          return;
+        }
+      }
+
+      const viewportLine = window.innerHeight * 0.4;
+
+      const sectionElements = sections
+        .map(({ id }) => document.getElementById(id))
+        .filter((node): node is HTMLElement => node !== null);
+
+      if (!sectionElements.length) {
+        return;
+      }
+
+      const sectionAtViewportLine = sectionElements.find((section) => {
+        const rect = section.getBoundingClientRect();
+
+        return rect.top <= viewportLine && rect.bottom > viewportLine;
+      });
+
+      if (sectionAtViewportLine) {
+        setActiveSection(sectionAtViewportLine.id);
+        return;
+      }
+
+      let closestSection = sectionElements[0];
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      sectionElements.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+
+        let distance = 0;
+
+        if (viewportLine < rect.top) {
+          distance = rect.top - viewportLine;
+        } else if (viewportLine > rect.bottom) {
+          distance = viewportLine - rect.bottom;
+        }
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = section;
+        }
+      });
+
+      setActiveSection(closestSection.id);
+    };
+
     const updateParallax = () => {
-      frame = 0;
-      if (reducedMotion) return;
+      if (reducedMotion) {
+        return;
+      }
 
       if (heroRef.current) {
         const rect = heroRef.current.getBoundingClientRect();
-        const offset = Math.max(-70, Math.min(70, -rect.top * 0.14));
-        heroRef.current.style.setProperty("--parallax-y", `${offset}px`);
+
+        const offset = Math.max(
+          -70,
+          Math.min(70, -rect.top * 0.14),
+        );
+
+        heroRef.current.style.setProperty(
+          "--parallax-y",
+          `${offset}px`,
+        );
+
         heroRef.current.style.setProperty(
           "--hero-copy-y",
-          `${Math.max(-38, Math.min(38, -rect.top * 0.075))}px`,
+          `${Math.max(
+            -38,
+            Math.min(38, -rect.top * 0.075),
+          )}px`,
         );
       }
 
       if (footerRef.current) {
         const rect = footerRef.current.getBoundingClientRect();
+
         const centerDelta =
-          rect.top + rect.height / 2 - window.innerHeight / 2;
+          rect.top +
+          rect.height / 2 -
+          window.innerHeight / 2;
+
         footerRef.current.style.setProperty(
           "--footer-parallax-y",
-          `${Math.max(-45, Math.min(45, centerDelta * -0.05))}px`,
+          `${Math.max(
+            -45,
+            Math.min(45, centerDelta * -0.05),
+          )}px`,
         );
       }
+    };
 
-      if (
-        projectsRef.current &&
-        projectsViewportRef.current &&
-        projectsTrackRef.current
-      ) {
-        const section = projectsRef.current;
-        const viewport = projectsViewportRef.current;
-        const track = projectsTrackRef.current;
-        const cards = Array.from(
-          track.querySelectorAll<HTMLElement>("[data-horizontal-project]"),
-        );
+    let frame = 0;
 
-        if (window.innerWidth >= 980) {
-          const rect = section.getBoundingClientRect();
-          const scrollRange = Math.max(
-            1,
-            section.offsetHeight - window.innerHeight,
-          );
-          const progress = Math.max(0, Math.min(1, -rect.top / scrollRange));
+    const updatePageEffects = () => {
+      frame = 0;
 
-          const viewportWidth = Math.min(
-            window.innerWidth,
-            viewport.getBoundingClientRect().width || window.innerWidth,
-          );
-          const maxTranslate = Math.max(0, track.scrollWidth - viewportWidth);
-          const translateX = -maxTranslate * progress;
+      updateActiveSection();
+      updateParallax();
+    };
 
-          track.style.setProperty("--projects-x", `${translateX}px`);
-          section.style.setProperty("--projects-progress", progress.toFixed(4));
-
-          const viewportRect = viewport.getBoundingClientRect();
-          const viewportCenter = viewportRect.left + viewportRect.width / 2;
-
-          cards.forEach((card) => {
-            const cardRect = card.getBoundingClientRect();
-            const cardCenter = cardRect.left + cardRect.width / 2;
-            const distance = Math.min(
-              1,
-              Math.abs(cardCenter - viewportCenter) /
-                (viewportRect.width * 0.58),
-            );
-            const scale = 1.055 - distance * 0.105;
-            const opacity = 1 - distance * 0.32;
-
-            card.style.setProperty("--project-scale", scale.toFixed(3));
-            card.style.setProperty("--project-opacity", opacity.toFixed(3));
-            card.classList.toggle(styles.focused, distance < 0.22);
-          });
-        } else {
-          track.style.removeProperty("--projects-x");
-          section.style.removeProperty("--projects-progress");
-          cards.forEach((card) => {
-            card.style.removeProperty("--project-scale");
-            card.style.removeProperty("--project-opacity");
-            card.classList.remove(styles.focused);
-          });
-        }
+    const requestUpdate = () => {
+      if (frame) {
+        return;
       }
 
-      document
-        .querySelectorAll<HTMLElement>("[data-project-media]")
-        .forEach((node) => {
-          const rect = node.getBoundingClientRect();
-          const center = rect.top + rect.height / 2;
-          const delta = (center - window.innerHeight / 2) * -0.025;
-          node.style.setProperty(
-            "--media-y",
-            `${Math.max(-16, Math.min(16, delta))}px`,
-          );
-        });
+      frame = window.requestAnimationFrame(updatePageEffects);
     };
 
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(updateParallax);
-    };
+    requestAnimationFrame(() => {
+      updateActiveSection();
+      updateParallax();
+    });
 
-    updateParallax();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("scroll", requestUpdate, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", requestUpdate);
+    window.addEventListener("hashchange", requestUpdate);
 
     return () => {
       revealObserver.disconnect();
-      sectionObserver.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
+
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      window.removeEventListener("hashchange", requestUpdate);
+
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
     };
-  }, [
-    footerRef,
-    heroRef,
-    projectsRef,
-    projectsTrackRef,
-    projectsViewportRef,
-    setActiveSection,
-  ]);
+  }, [footerRef, heroRef, setActiveSection]);
 }

@@ -1,153 +1,340 @@
 .scrollSection {
-  --projects-progress: 0;
   position: relative;
-  height: var(--projects-scroll-height, 320vh);
   padding: 0 !important;
   overflow: clip;
   background:
-    radial-gradient(circle at 50% 45%, rgba(40, 104, 166, 0.12), transparent 36%),
+    radial-gradient(circle at 35% 48%,
+      rgba(40, 104, 166, 0.14),
+      transparent 34%),
     #070d13 !important;
 }
 
-.sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  min-height: 680px;
+.pin {
   width: 100%;
-  min-width: 0;
+  height: 100vh;
+  min-height: 760px;
   overflow: hidden;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto auto;
   align-items: center;
-  padding: 92px 0 34px;
+  padding: 84px 0 26px;
 }
 
 .heading {
   position: relative;
-  z-index: 4;
+  z-index: 30;
   margin-bottom: 8px !important;
 }
 
-.scrollHint {
-  position: absolute;
-  z-index: 4;
-  right: max(36px, calc((100vw - 1180px) / 2));
-  top: 164px;
-  display: flex;
-  gap: 9px;
+.desktopShowcase {
+  width: min(1280px, calc(100% - 64px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.36fr) minmax(330px, 0.64fr);
+  gap: clamp(42px, 5vw, 82px);
   align-items: center;
-  color: rgba(214, 222, 230, 0.58);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  pointer-events: none;
-}
-
-.scrollHint span {
-  color: #78b9ff;
-  font-size: 17px;
-  transform: translateX(calc(var(--projects-progress) * 7px));
-}
-
-.viewport {
-  width: 100%;
   min-height: 0;
+}
+
+.deckWrap {
   min-width: 0;
-  max-width: 100vw;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.deck {
+  position: relative;
+  width: min(780px, 58vw);
+  height: min(56vh, 540px);
+  min-height: 430px;
+  perspective: 1600px;
+}
+
+.visualCard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: min(640px, calc(100% - 120px));
+  height: 100%;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.track {
-  width: max-content;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  padding-inline: max(38px, calc(50vw - 310px));
-  will-change: transform;
-  transform: translate3d(var(--projects-x, 0px), 0, 0);
-}
-
-.card {
-  --project-scale: 0.95;
-  --project-opacity: 0.72;
-  flex: 0 0 min(620px, 72vw);
-  width: min(620px, 72vw);
-  height: min(56vh, 530px);
-  min-height: 410px;
-  opacity: var(--project-opacity);
-  transform: scale(var(--project-scale));
-  transform-origin: center center;
-  transition:
-    opacity 0.18s linear,
-    transform 0.18s linear,
-    border-color 0.28s ease,
-    box-shadow 0.28s ease,
-    filter 0.28s ease;
-  will-change: transform, opacity;
-}
-
-.card:hover {
-  transform: scale(var(--project-scale));
-  border-color: rgba(126, 185, 251, 0.5);
-}
-
-.focused {
-  border-color: rgba(126, 185, 251, 0.42) !important;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 22px;
+  background: #0b1219;
   box-shadow:
-    0 28px 85px rgba(0, 0, 0, 0.42),
-    0 0 0 1px rgba(126, 185, 251, 0.08) inset !important;
-  filter: saturate(1.04) brightness(1.03);
+    0 34px 95px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.025) inset;
+  will-change: transform, opacity;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(270px, 0, 0);
+  z-index: 1;
 }
 
-.focused :global(.project-body) {
-  transform: translateY(-3px);
+.visualCard:first-child {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(92px, 0, 0);
+  z-index: 2;
 }
 
-.card :global(.project-body) {
-  transition: transform 0.28s ease;
+.visualImage,
+.visualBackdrop {
+  object-fit: cover;
+  z-index: 0;
 }
 
-.quizMedia {
+.visualBackdrop {
+  opacity: 1;
+}
+
+.quizBackdrop {
+  transform: scale(1.035);
+  filter: blur(3px) saturate(1.18) brightness(1.08);
+}
+
+.menuBackdrop {
+  transform: scale(1.1);
+  filter: blur(24px) saturate(1.1) brightness(0.7);
+}
+
+.visualBackdropShade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.quizBackdropShade {
   background:
-    radial-gradient(circle at 76% 38%, rgba(42, 142, 167, 0.28), transparent 28%),
-    linear-gradient(135deg, #0b1822, #0b131b 64%, #11161b);
+    linear-gradient(90deg,
+      rgba(5, 9, 13, 0.3) 0%,
+      rgba(5, 9, 13, 0.08) 38%,
+      rgba(5, 9, 13, 0.01) 72%),
+    linear-gradient(180deg,
+      rgba(5, 9, 13, 0.02),
+      rgba(5, 9, 13, 0.12));
 }
 
-.quizImage {
-  object-fit: contain !important;
-  object-position: 82% 44% !important;
-  padding: 22px 26px 112px 45%;
-  transform: translate3d(0, var(--media-y, 0px), 0) scale(1.01) !important;
-}
-
-.quizCard :global(.project-body) {
-  max-width: 54%;
-}
-
-
-.menuMedia {
+.menuBackdropShade {
   background:
-    radial-gradient(circle at 76% 38%, rgba(89, 72, 154, 0.28), transparent 30%),
-    linear-gradient(135deg, #171426, #0d1119 64%, #11151d);
+    radial-gradient(circle at 46% 48%,
+      rgba(173, 116, 58, 0.13),
+      transparent 34%),
+    radial-gradient(circle at 68% 38%,
+      rgba(112, 75, 143, 0.18),
+      transparent 34%),
+    linear-gradient(90deg,
+      rgba(8, 8, 12, 0.32),
+      rgba(8, 8, 12, 0.08) 52%,
+      rgba(8, 8, 12, 0.2));
 }
 
-.menuImage {
+.visualShade {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(5, 9, 13, 0.01) 58%,
+      rgba(5, 9, 13, 0.18) 100%);
+}
+
+.visualLock {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background: rgba(7, 11, 16, 0.34);
+  backdrop-filter: blur(10px);
+  font-size: 26px;
+}
+
+.quizVisualStage,
+.menuVisualStage {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.device {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 24px;
+  background: rgba(7, 10, 14, 0.38);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(255, 255, 255, 0.035) inset;
+}
+
+.deviceImage {
   object-fit: contain !important;
-  object-position: 82% 44% !important;
-  padding: 22px 26px 112px 45%;
-  transform: translate3d(0, var(--media-y, 0px), 0) scale(1.01) !important;
+  object-position: center top !important;
 }
 
-.menuCard :global(.project-body) {
-  max-width: 54%;
+.quizDevice {
+  top: 5%;
+  right: 8%;
+  width: min(300px, 42%);
+  height: 91%;
+  transform: rotate(0.8deg);
+  background: rgba(8, 12, 17, 0.16);
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.38),
+    0 0 34px rgba(90, 167, 255, 0.08);
+}
+
+.menuGuestDevice {
+  top: 4%;
+  left: 14%;
+  width: min(300px, 43%);
+  height: 92%;
+  z-index: 3;
+  transform: rotate(-1.4deg);
+  background: rgba(18, 12, 24, 0.32);
+  box-shadow:
+    0 34px 90px rgba(0, 0, 0, 0.44),
+    0 0 36px rgba(176, 117, 55, 0.08);
+}
+
+.menuAdminDevice {
+  top: 13%;
+  right: 11%;
+  width: min(230px, 32%);
+  height: 75%;
+  z-index: 2;
+  transform: rotate(2.2deg);
+  background: rgba(18, 12, 24, 0.28);
+  opacity: 0.9;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.38),
+    0 0 28px rgba(112, 75, 143, 0.08);
+}
+
+.detailsWrap {
+  position: relative;
+  min-width: 0;
+  height: min(52vh, 500px);
+  min-height: 410px;
+}
+
+.detail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.detailCounter {
+  margin-bottom: 22px;
+  color: #65727f;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.detail h3 {
+  margin: 2px 0 0;
+  max-width: 440px;
+  font-size: clamp(32px, 3vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.detailDescription {
+  max-width: 440px;
+  margin: 18px 0 20px;
+  color: #aeb7c0;
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.thumbNav {
+  width: min(1280px, calc(100% - 64px));
+  margin: 18px auto 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  position: relative;
+  z-index: 30;
+}
+
+.thumbButton {
+  min-height: 76px;
+  padding: 14px 16px;
+  text-align: left;
+  color: #b5bec8;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    color 0.22s ease;
+  cursor: pointer;
+}
+
+.thumbButton:hover {
+  transform: translateY(-2px);
+  border-color: rgba(126, 185, 251, 0.28);
+  background: rgba(126, 185, 251, 0.05);
+  color: #edf3fa;
+}
+
+.thumbButtonActive {
+  border-color: rgba(126, 185, 251, 0.42);
+  background: rgba(126, 185, 251, 0.08);
+  color: #f5f8fc;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+}
+
+.thumbMeta {
+  display: block;
+  margin-bottom: 8px;
+  color: #6d7a87;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.thumbTitle {
+  display: block;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.mobileList {
+  display: none;
 }
 
 .progress {
   position: relative;
-  z-index: 4;
-  width: min(1180px, calc(100% - 64px));
+  z-index: 30;
+  width: min(1280px, calc(100% - 64px));
   height: 1px;
   margin: 0 auto;
   overflow: hidden;
@@ -158,101 +345,132 @@
   display: block;
   width: 100%;
   height: 100%;
-  transform: scaleX(var(--projects-progress));
+  transform: scaleX(0);
   transform-origin: left center;
   background: linear-gradient(90deg, #5aa7ff, #8cc7ff);
   will-change: transform;
 }
 
+.quizMedia,
+.menuMedia {
+  background:
+    radial-gradient(circle at 75% 30%,
+      rgba(90, 167, 255, 0.12),
+      transparent 24%),
+    linear-gradient(135deg, #0b131c, #0c1117 55%, #0d141c);
+}
+
+.quizImage,
+.menuImage {
+  object-fit: contain !important;
+  object-position: 80% 24% !important;
+  padding: 20px 28px 150px 46%;
+}
+
+.quizCard :global(.project-body),
+.menuCard :global(.project-body) {
+  max-width: 58%;
+}
+
+@media (max-width: 1180px) and (min-width: 980px) {
+  .desktopShowcase {
+    width: min(1120px, calc(100% - 44px));
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.7fr);
+    gap: 38px;
+  }
+
+  .deck {
+    width: min(700px, 58vw);
+  }
+
+  .visualCard {
+    width: min(590px, calc(100% - 100px));
+  }
+
+  .quizDevice {
+    right: 6%;
+    width: min(275px, 44%);
+  }
+
+  .menuGuestDevice {
+    left: 11%;
+    width: min(275px, 44%);
+  }
+
+  .menuAdminDevice {
+    right: 8%;
+    width: min(215px, 34%);
+  }
+}
+
 @media (max-width: 979px) {
   .scrollSection {
-    height: auto;
     padding: 64px 0 !important;
     overflow: hidden;
   }
 
-  .sticky {
-    position: relative;
-    top: auto;
+  .pin {
     height: auto;
     min-height: 0;
     display: block;
     padding: 0;
+    overflow: visible;
   }
 
   .heading {
     margin-bottom: 30px !important;
   }
 
-  .scrollHint,
+  .desktopShowcase,
   .progress {
     display: none;
   }
 
-  .viewport {
-    display: block;
+  .thumbNav {
+    width: min(100% - 30px, 720px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 auto 24px;
   }
 
-  .track {
+  .mobileList {
     width: min(100% - 30px, 720px);
     margin: 0 auto;
-    padding: 0;
     display: grid;
     grid-template-columns: 1fr;
     gap: 18px;
-    transform: none !important;
   }
 
-  .card {
+  .mobileList :global(.project-card) {
     width: 100%;
     height: 470px;
     min-height: 0;
-    opacity: 1 !important;
-    transform: none !important;
+    opacity: 1;
+    transform: none;
   }
 
-  .card:hover {
-    transform: translateY(-3px) !important;
-  }
-
-  .quizImage {
-    object-position: 76% 28% !important;
-    padding: 18px 22px 178px 42%;
-  }
-
-  .quizCard :global(.project-body) {
-    max-width: 62%;
-  }
-
+  .quizImage,
   .menuImage {
-    object-position: 76% 28% !important;
-    padding: 18px 22px 178px 42%;
-  }
-
-  .menuCard :global(.project-body) {
-    max-width: 62%;
+    object-position: 76% 20% !important;
+    padding: 18px 22px 165px 42%;
   }
 }
 
 @media (max-width: 620px) {
-  .card {
+  .thumbNav {
+    grid-template-columns: 1fr;
+  }
+
+  .mobileList :global(.project-card) {
     height: 500px;
   }
 
-  .quizImage {
-    object-position: center 12% !important;
-    padding: 20px 44px 245px;
-  }
-
-  .quizCard :global(.project-body) {
-    max-width: none;
-  }
-
+  .quizImage,
   .menuImage {
-    object-position: center 12% !important;
-    padding: 20px 44px 245px;
+    object-position: center 9% !important;
+    padding: 18px 42px 245px;
   }
 
+  .quizCard :global(.project-body),
   .menuCard :global(.project-body) {
     max-width: none;
   }
@@ -260,38 +478,53 @@
 
 @media (prefers-reduced-motion: reduce) {
   .scrollSection {
-    height: auto;
     padding: 64px 0 !important;
   }
 
-  .sticky {
-    position: relative;
+  .pin {
     height: auto;
     min-height: 0;
     display: block;
     padding: 0;
+    overflow: visible;
   }
 
-  .scrollHint,
+  .desktopShowcase,
   .progress {
     display: none;
   }
 
-  .track {
-    width: min(100% - 64px, 1180px);
-    margin: 0 auto;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    transform: none !important;
+  .thumbNav {
+    width: min(1180px, calc(100% - 64px));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0 auto 24px;
   }
 
-  .card {
+  .mobileList {
+    width: min(1180px, calc(100% - 64px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .mobileList :global(.project-card) {
     width: auto;
     height: 480px;
     min-height: 0;
-    opacity: 1 !important;
-    transform: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 760px) {
+  .thumbNav {
+    width: min(100% - 30px, 680px);
+    grid-template-columns: 1fr;
+  }
+
+  .mobileList {
+    width: min(100% - 30px, 680px);
+    grid-template-columns: 1fr;
   }
 }

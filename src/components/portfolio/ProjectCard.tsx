@@ -3,7 +3,13 @@ import type { Project } from "@/data/portfolio";
 import styles from "@/app/projects-scroll.module.css";
 import Arrow from "./Arrow";
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
   const isQuiz = project.variant === "quiz";
   const isMenu = project.variant === "menu";
 
@@ -17,31 +23,75 @@ export default function ProjectCard({ project }: { project: Project }) {
     .filter(Boolean)
     .join(" ");
 
-  const mediaClassName = [
-    "project-media",
-    isQuiz ? styles.quizMedia : "",
-    isMenu ? styles.menuMedia : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const imageClassName = isQuiz
-    ? styles.quizImage
-    : isMenu
-      ? styles.menuImage
-      : undefined;
-
   return (
-    <article className={cardClassName} data-horizontal-project>
-      <div className={mediaClassName} data-project-media>
-        <Image
-          src={project.image}
-          alt={project.imageAlt}
-          fill
-          sizes="(max-width: 979px) 100vw, 620px"
-          className={imageClassName}
-        />
+    <article
+      className={cardClassName}
+      data-project-card
+      style={{ "--card-index": index } as React.CSSProperties}
+    >
+      <div
+        className={[
+          "project-media",
+          isQuiz || isMenu ? styles.showcaseMedia : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
+        {isQuiz || isMenu ? (
+          <>
+            <Image
+              src={project.backdropImage ?? project.image}
+              alt=""
+              fill
+              aria-hidden="true"
+              sizes="(max-width: 979px) 100vw, 680px"
+              className={styles.showcaseBackdrop}
+            />
+            <div className={styles.showcaseBackdropShade} />
+
+            <div
+              className={
+                isMenu ? styles.menuScreens : styles.quizScreenContainer
+              }
+            >
+              {isMenu && project.secondaryImage ? (
+                <div className={`${styles.deviceFrame} ${styles.menuGuestFrame}`}>
+                  <Image
+                    src={project.secondaryImage}
+                    alt={project.secondaryImageAlt ?? ""}
+                    fill
+                    sizes="240px"
+                    className={styles.deviceImage}
+                  />
+                </div>
+              ) : null}
+
+              <div
+                className={`${styles.deviceFrame} ${
+                  isMenu ? styles.menuAdminFrame : styles.quizFrame
+                }`}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.imageAlt}
+                  fill
+                  sizes="260px"
+                  className={styles.deviceImage}
+                />
+              </div>
+            </div>
+          </>
+        ) : (
+          <Image
+            src={project.image}
+            alt={project.imageAlt}
+            fill
+            sizes="(max-width: 979px) 100vw, 680px"
+          />
+        )}
+
         <div className="project-shade" />
+
         {project.confidential ? (
           <div className="confidential-lock" aria-hidden="true">
             🔒
