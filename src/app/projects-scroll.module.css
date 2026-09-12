@@ -1,7 +1,7 @@
 .scrollSection {
   --projects-progress: 0;
   position: relative;
-  height: 320vh;
+  height: var(--projects-scroll-height, 320vh);
   padding: 0 !important;
   overflow: clip;
   background:
@@ -126,6 +126,24 @@
   max-width: 54%;
 }
 
+
+.menuMedia {
+  background:
+    radial-gradient(circle at 76% 38%, rgba(89, 72, 154, 0.28), transparent 30%),
+    linear-gradient(135deg, #171426, #0d1119 64%, #11151d);
+}
+
+.menuImage {
+  object-fit: contain !important;
+  object-position: 82% 44% !important;
+  padding: 22px 26px 112px 45%;
+  transform: translate3d(0, var(--media-y, 0px), 0) scale(1.01) !important;
+}
+
+.menuCard :global(.project-body) {
+  max-width: 54%;
+}
+
 .progress {
   position: relative;
   z-index: 4;
@@ -205,6 +223,15 @@
   .quizCard :global(.project-body) {
     max-width: 62%;
   }
+
+  .menuImage {
+    object-position: 76% 28% !important;
+    padding: 18px 22px 178px 42%;
+  }
+
+  .menuCard :global(.project-body) {
+    max-width: 62%;
+  }
 }
 
 @media (max-width: 620px) {
@@ -218,6 +245,15 @@
   }
 
   .quizCard :global(.project-body) {
+    max-width: none;
+  }
+
+  .menuImage {
+    object-position: center 12% !important;
+    padding: 20px 44px 245px;
+  }
+
+  .menuCard :global(.project-body) {
     max-width: none;
   }
 }
