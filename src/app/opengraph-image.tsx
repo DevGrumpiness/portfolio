@@ -16,22 +16,23 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "#0b0d11",
-          color: "#edeef1",
+          background:
+            "radial-gradient(circle at 75% 35%, #17304a 0%, #0a1118 35%, #05080b 75%)",
+          color: "#f4f7fa",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ fontSize: 28, color: "#6d94f2", marginBottom: 24 }}>
-          {siteConfig.location}
+        <div style={{ fontSize: 24, color: "#6fb4ff", marginBottom: 24 }}>
+          Web Developer · AI Automation · Real-world Solutions
         </div>
-        <div style={{ fontSize: 64, fontWeight: 600, lineHeight: 1.1 }}>
+        <div style={{ fontSize: 70, fontWeight: 700, lineHeight: 1.02 }}>
           {siteConfig.name}
         </div>
-        <div style={{ fontSize: 32, marginTop: 20, color: "#9a9fa8" }}>
-          {siteConfig.role}
+        <div style={{ fontSize: 34, marginTop: 24, color: "#b7c0c9" }}>
+          Building digital solutions that actually work.
         </div>
-        <div style={{ fontSize: 24, marginTop: 40, color: "#6d94f2" }}>
-          React · Vue · TypeScript · JavaScript
+        <div style={{ fontSize: 22, marginTop: 42, color: "#6fb4ff" }}>
+          React · Vue · TypeScript · Next.js · FastAPI · AI Automation
         </div>
       </div>
     ),
