@@ -56,6 +56,7 @@ export type Project = {
   title: string;
   description: string;
   image: string;
+  imageAlt?: string;
   tags: string[];
   href?: string;
   linkLabel: string;
@@ -63,6 +64,7 @@ export type Project = {
   variant?: ProjectVariant;
   backdropImage?: string;
   secondaryImage?: string;
+  secondaryImageAlt?: string;
 };
 
 export const projects: Project[] = [

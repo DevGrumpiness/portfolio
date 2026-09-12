@@ -67,13 +67,12 @@ export default function ProjectCard({
               ) : null}
 
               <div
-                className={`${styles.deviceFrame} ${
-                  isMenu ? styles.menuAdminFrame : styles.quizFrame
-                }`}
+                className={`${styles.deviceFrame} ${isMenu ? styles.menuAdminFrame : styles.quizFrame
+                  }`}
               >
                 <Image
                   src={project.image}
-                  alt={project.imageAlt}
+                  alt={project.imageAlt ?? ""}
                   fill
                   sizes="260px"
                   className={styles.deviceImage}
@@ -84,7 +83,7 @@ export default function ProjectCard({
         ) : (
           <Image
             src={project.image}
-            alt={project.imageAlt}
+            alt={project.imageAlt ?? ""}
             fill
             sizes="(max-width: 979px) 100vw, 680px"
           />
