@@ -31,7 +31,7 @@ export const experience = [
   {
     period: "2022 — Now",
     title: "LYnx",
-    role: "Web Developer · Protected project",
+    role: "Web Developer · Innovation ",
     meta: "Vue · TypeScript · Keycloak",
   },
   {
@@ -56,37 +56,27 @@ export type Project = {
   title: string;
   description: string;
   image: string;
-  imageAlt: string;
-  tags: readonly string[];
+  tags: string[];
   href?: string;
   linkLabel: string;
   confidential?: boolean;
   variant?: ProjectVariant;
+  backdropImage?: string;
+  secondaryImage?: string;
 };
 
-export const projects: readonly Project[] = [
+export const projects: Project[] = [
   {
-    id: "lynx",
-    kicker: "Protected Project",
-    title: "LYnx",
-    description: "Innovative digital prototypes for public-sector organizations.",
-    image: "/portfolio/lynx-confidential.webp",
-    imageAlt: "Abstract confidential project placeholder",
-    tags: ["Vue", "TypeScript", "Keycloak", "Docker"],
-    linkLabel: "Project details available on request.",
-    confidential: true,
-  },
-  {
-    id: "check24-hotels",
+    id: "check24",
     kicker: "E-Commerce",
     title: "CHECK24 Hotel Comparison",
     description:
       "Frontend development focused on performant, responsive hotel comparison experiences.",
     image: "/portfolio/check24-hotels.webp",
-    imageAlt: "Hotel and travel imagery representing hotel comparison work",
     tags: ["React", "TypeScript", "PHP", "SCSS", "Docker"],
     href: "https://hotel.check24.de",
     linkLabel: "CHECK24 Hotel",
+    variant: "default",
   },
   {
     id: "ms-game",
@@ -95,11 +85,23 @@ export const projects: readonly Project[] = [
     description:
       "Mobile-first local quiz game with category-based rounds, live scoring and chat.",
     image: "/portfolio/ms-game.webp",
-    imageAlt: "Münster Quiz Game showing category selection and live scoring",
+    backdropImage: "/portfolio/muenster-backdrop.png",
     tags: ["Local Quiz", "Mobile-first", "Game UX"],
     href: "https://ms-game.de",
     linkLabel: "Play at ms-game.de",
     variant: "quiz",
+  },
+  {
+    id: "lynx",
+    kicker: "Innovating Digital Prototypes",
+    title: "LYnx",
+    description:
+      "Innovative digital prototypes for public-sector organizations.",
+    image: "/portfolio/lynx-confidential.webp",
+    tags: ["Vue", "TypeScript", "Keycloak", "Docker"],
+    confidential: true,
+    linkLabel: "Project details available on request.",
+    variant: "default",
   },
   {
     id: "casa-menu",
@@ -108,10 +110,11 @@ export const projects: readonly Project[] = [
     description:
       "Mobile-first digital menu with instant product availability management for day-to-day bar operations.",
     image: "/portfolio/casa-menu.webp",
-    imageAlt: "Casa Vazquez digital menu availability management interface",
-    tags: ["Digital Menu", "Availability", "Mobile-first"],
+    secondaryImage: "/portfolio/casa-menu-carte.webp",
+    backdropImage: "/portfolio/casa-menu-carte.webp",
+    tags: ["Digital Menu", "Management", "Mobile-first"],
     href: "https://menu.casavazquez.de",
     linkLabel: "Open digital menu",
     variant: "menu",
   },
-] as const;
+];
