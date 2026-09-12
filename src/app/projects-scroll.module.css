@@ -1,0 +1,261 @@
+.scrollSection {
+  --projects-progress: 0;
+  position: relative;
+  height: 320vh;
+  padding: 0 !important;
+  overflow: clip;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(40, 104, 166, 0.12), transparent 36%),
+    #070d13 !important;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 680px;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  padding: 92px 0 34px;
+}
+
+.heading {
+  position: relative;
+  z-index: 4;
+  margin-bottom: 8px !important;
+}
+
+.scrollHint {
+  position: absolute;
+  z-index: 4;
+  right: max(36px, calc((100vw - 1180px) / 2));
+  top: 164px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  color: rgba(214, 222, 230, 0.58);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+}
+
+.scrollHint span {
+  color: #78b9ff;
+  font-size: 17px;
+  transform: translateX(calc(var(--projects-progress) * 7px));
+}
+
+.viewport {
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+  max-width: 100vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-inline: max(38px, calc(50vw - 310px));
+  will-change: transform;
+  transform: translate3d(var(--projects-x, 0px), 0, 0);
+}
+
+.card {
+  --project-scale: 0.95;
+  --project-opacity: 0.72;
+  flex: 0 0 min(620px, 72vw);
+  width: min(620px, 72vw);
+  height: min(56vh, 530px);
+  min-height: 410px;
+  opacity: var(--project-opacity);
+  transform: scale(var(--project-scale));
+  transform-origin: center center;
+  transition:
+    opacity 0.18s linear,
+    transform 0.18s linear,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    filter 0.28s ease;
+  will-change: transform, opacity;
+}
+
+.card:hover {
+  transform: scale(var(--project-scale));
+  border-color: rgba(126, 185, 251, 0.5);
+}
+
+.focused {
+  border-color: rgba(126, 185, 251, 0.42) !important;
+  box-shadow:
+    0 28px 85px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(126, 185, 251, 0.08) inset !important;
+  filter: saturate(1.04) brightness(1.03);
+}
+
+.focused :global(.project-body) {
+  transform: translateY(-3px);
+}
+
+.card :global(.project-body) {
+  transition: transform 0.28s ease;
+}
+
+.quizMedia {
+  background:
+    radial-gradient(circle at 76% 38%, rgba(42, 142, 167, 0.28), transparent 28%),
+    linear-gradient(135deg, #0b1822, #0b131b 64%, #11161b);
+}
+
+.quizImage {
+  object-fit: contain !important;
+  object-position: 82% 44% !important;
+  padding: 22px 26px 112px 45%;
+  transform: translate3d(0, var(--media-y, 0px), 0) scale(1.01) !important;
+}
+
+.quizCard :global(.project-body) {
+  max-width: 54%;
+}
+
+.progress {
+  position: relative;
+  z-index: 4;
+  width: min(1180px, calc(100% - 64px));
+  height: 1px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(var(--projects-progress));
+  transform-origin: left center;
+  background: linear-gradient(90deg, #5aa7ff, #8cc7ff);
+  will-change: transform;
+}
+
+@media (max-width: 979px) {
+  .scrollSection {
+    height: auto;
+    padding: 64px 0 !important;
+    overflow: hidden;
+  }
+
+  .sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 0;
+    display: block;
+    padding: 0;
+  }
+
+  .heading {
+    margin-bottom: 30px !important;
+  }
+
+  .scrollHint,
+  .progress {
+    display: none;
+  }
+
+  .viewport {
+    display: block;
+  }
+
+  .track {
+    width: min(100% - 30px, 720px);
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    transform: none !important;
+  }
+
+  .card {
+    width: 100%;
+    height: 470px;
+    min-height: 0;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .card:hover {
+    transform: translateY(-3px) !important;
+  }
+
+  .quizImage {
+    object-position: 76% 28% !important;
+    padding: 18px 22px 178px 42%;
+  }
+
+  .quizCard :global(.project-body) {
+    max-width: 62%;
+  }
+}
+
+@media (max-width: 620px) {
+  .card {
+    height: 500px;
+  }
+
+  .quizImage {
+    object-position: center 12% !important;
+    padding: 20px 44px 245px;
+  }
+
+  .quizCard :global(.project-body) {
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollSection {
+    height: auto;
+    padding: 64px 0 !important;
+  }
+
+  .sticky {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    display: block;
+    padding: 0;
+  }
+
+  .scrollHint,
+  .progress {
+    display: none;
+  }
+
+  .track {
+    width: min(100% - 64px, 1180px);
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    transform: none !important;
+  }
+
+  .card {
+    width: auto;
+    height: 480px;
+    min-height: 0;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
