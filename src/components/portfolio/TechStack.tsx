@@ -1,16 +1,21 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import { stack } from "@/data/portfolio";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function TechStack() {
+  const { t } = useLanguage();
+
   return (
     <section id="stack" className="section section-stack">
       <div className="page-width">
         <div className="section-heading" data-reveal>
           <div>
-            <p className="eyebrow">Tech Stack</p>
+            <p className="eyebrow">{t.technologies.heading}</p>
             <h2>Tools & Technologies</h2>
           </div>
-          <p>A pragmatic stack for modern web development and AI integration, continuously adapting to new challenges.</p>
+          <p>{t.technologies.subheading}</p>
         </div>
         <div className="tech-strip" data-reveal>
           {stack.map(([name, mark], index) => (

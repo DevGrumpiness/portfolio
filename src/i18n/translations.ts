@@ -10,11 +10,13 @@ export interface Translations {
     contact: string;
   };
   hero: {
+    eyebrow: string;
     title: string;
     description: string;
     viewProjects: string;
     github: string;
     downloadCv: string;
+    capabilities: string[];
   };
   work: {
     heading: string;
@@ -34,9 +36,12 @@ export interface Translations {
   };
   experience: {
     heading: string;
+    title: string;
+    body: string;
   };
   technologies: {
     heading: string;
+    subheading: string;
   };
   certifications: {
     heading: string;
@@ -46,14 +51,18 @@ export interface Translations {
     body: string[];
   };
   contact: {
+    eyebrow: string;
     heading: string;
+    body: string;
     location: string;
     available: string;
     email: string;
     linkedin: string;
+    getInTouch: string;
     downloadCv: string;
   };
   footer: {
+    tagline: string;
     rights: string;
   };
 }
@@ -69,13 +78,20 @@ export const translations: Record<Locale, Translations> = {
       contact: "Contact",
     },
     hero: {
+      eyebrow: "Web Developer · AI Automation · Real-world Solutions",
       title:
         "Web Developer building production-ready web applications and AI-powered tools.",
       description:
-        "I build with React, Vue, TypeScript and Next.js, and I ship practical AI integrations — from voice agents to backend automation — as working systems, not demos.",
+        "I build with React, Vue, TypeScript and Next.js, and I ship practical web applications.",
       viewProjects: "View Projects",
       github: "GitHub",
       downloadCv: "Download CV",
+      capabilities: [
+        "▣ Web Applications",
+        "⌁ AI & Automation",
+        "◇ Data Annotation",
+        "◎ Real-world Experience",
+      ],
     },
     work: {
       heading: "Selected Work",
@@ -97,9 +113,14 @@ export const translations: Record<Locale, Translations> = {
     },
     experience: {
       heading: "Experience",
+      title: "From missions to products.",
+      body:
+        "8+ years across web development, AI/data work and building my own business. Different environments, same focus: solve problems and deliver value.",
     },
     technologies: {
       heading: "Core Stack",
+      subheading:
+        "A pragmatic stack for modern web development and AI integration, continuously adapting to new challenges.",
     },
     certifications: {
       heading: "Certifications",
@@ -112,14 +133,18 @@ export const translations: Record<Locale, Translations> = {
       ],
     },
     contact: {
+      eyebrow: "Good ideas. Built well.",
       heading: "Let's build something useful.",
+      body: "Open for interesting projects, collaborations and opportunities.",
       location: "Münster, Germany",
       available: "Available from October 2026",
       email: "Email",
       linkedin: "LinkedIn",
+      getInTouch: "Get in touch",
       downloadCv: "Download CV",
     },
     footer: {
+      tagline: "Web Developer · AI Automation · Problem Solver",
       rights: "All rights reserved.",
     },
   },
@@ -133,13 +158,19 @@ export const translations: Record<Locale, Translations> = {
       contact: "Kontakt",
     },
     hero: {
+      eyebrow: "Webentwickler · KI-Automatisierung · Praxisnahe Lösungen",
       title:
         "Webentwickler für produktionsreife Webanwendungen und KI-gestützte Tools.",
       description:
-        "Ich entwickle mit React, Vue, TypeScript und Next.js und setze praxisnahe KI-Integrationen um — von Sprachagenten bis zur Backend-Automatisierung — als funktionierende Systeme, nicht als Demos.",
+        "Ich entwickle mit React, Vue, TypeScript und Next.js und setze praxisnahe Web-Applikationen um.",
       viewProjects: "Projekte ansehen",
       github: "GitHub",
       downloadCv: "Lebenslauf herunterladen",
+      capabilities: [
+        "▣ Webanwendungen",
+        "⌁ KI & Automatisierung",
+        "◇ Datenannotation",
+      ],
     },
     work: {
       heading: "Ausgewählte Projekte",
@@ -161,9 +192,14 @@ export const translations: Record<Locale, Translations> = {
     },
     experience: {
       heading: "Erfahrung",
+      title: "Von Einsätzen zu Produkten.",
+      body:
+        "8+ Jahre in Webentwicklung, KI-/Datenarbeit und dem Aufbau eigener Geschäftslösungen. Unterschiedliche Umfelder, gleicher Fokus: Probleme lösen und Wert liefern.",
     },
     technologies: {
       heading: "Kern-Stack",
+      subheading:
+        "Ein pragmatischer Stack für moderne Webentwicklung und KI-Integration, der sich laufend an neue Anforderungen anpasst.",
     },
     certifications: {
       heading: "Zertifikate",
@@ -176,14 +212,18 @@ export const translations: Record<Locale, Translations> = {
       ],
     },
     contact: {
+      eyebrow: "Gute Ideen. Sauber umgesetzt.",
       heading: "Lass uns etwas Nützliches bauen.",
+      body: "Offen für interessante Projekte, Kooperationen und Chancen.",
       location: "Münster, Deutschland",
       available: "Verfügbar ab Oktober 2026",
       email: "E-Mail",
       linkedin: "LinkedIn",
+      getInTouch: "Kontakt aufnehmen",
       downloadCv: "Lebenslauf herunterladen",
     },
     footer: {
+      tagline: "Webentwickler · KI-Automatisierung · Problemlöser",
       rights: "Alle Rechte vorbehalten.",
     },
   },

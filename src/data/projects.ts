@@ -15,6 +15,10 @@ export interface Project {
   githubUrl?: string;
   image?: string;
   imageMobile?: string;
+  backdropImage?: string;
+  secondaryImage?: string;
+  secondaryImageAlt?: string;
+  variant?: "default" | "quiz" | "menu";
   role: string;
   tech: string[];
   descriptionEn: string;
@@ -58,8 +62,12 @@ export const publicProjects: Project[] = [
     name: "Casa Vazquez",
     category: "public",
     url: "https://menu.casavazquez.de",
-    image: "/projects/casa-vazquez.webp",
+    image: "/portfolio/casa-menu.webp",
     imageMobile: "/projects/casa-vazquez-mobile.webp",
+    secondaryImage: "/portfolio/casa-menu-carte.webp",
+    secondaryImageAlt: "Casa Vazquez guest menu",
+    backdropImage: "/portfolio/casa-menu-carte.webp",
+    variant: "menu",
     role: "Frontend & Fullstack Development",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     tagEn: "Production web platform",
@@ -74,8 +82,10 @@ export const publicProjects: Project[] = [
     name: "Münster Quiz",
     category: "public",
     url: "https://ms-game.de",
-    image: "/projects/muenster-quiz.webp",
+    image: "/portfolio/ms-game.webp",
     imageMobile: "/projects/muenster-quiz-mobile.webp",
+    backdropImage: "/portfolio/muenster-backdrop.png",
+    variant: "quiz",
     role: "Frontend & Fullstack Development",
     tech: ["React", "TypeScript"],
     tagEn: "Local interactive quiz",
@@ -90,8 +100,9 @@ export const publicProjects: Project[] = [
 export const confidentialProjects: Project[] = [
   {
     slug: "lynx",
-    name: "LYnx – Public Sector Platform",
+    name: "LYnx — Public Sector Platform",
     category: "confidential",
+    image: "/portfolio/lynx-confidential.webp",
     role: "Fullstack / Web Developer — German Navy / Bundeswehr, Team LYnx",
     tech: ["Vue.js", "TypeScript", "SCSS", "Pinia", "Kafka", "Git"],
     tagEn: "Public sector · since 2022",
@@ -117,6 +128,7 @@ export const confidentialProjects: Project[] = [
     slug: "check24",
     name: "CHECK24 — Hotel Comparison",
     category: "confidential",
+    image: "/portfolio/check24-hotels.webp",
     role: "Frontend Developer — CHECK24, Münster",
     tech: ["React", "Responsive Web", "UI/UX Collaboration"],
     tagEn: "Product company · 2020–2022",

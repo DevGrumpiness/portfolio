@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import type { Project } from "@/data/portfolio";
+import type { CSSProperties } from "react";
+import type { Project } from "@/data/projects";
 import styles from "@/app/projects-scroll.module.css";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import Arrow from "./Arrow";
 
 export default function ProjectCard({
@@ -10,13 +14,22 @@ export default function ProjectCard({
   project: Project;
   index: number;
 }) {
+  const { locale, t } = useLanguage();
   const isQuiz = project.variant === "quiz";
   const isMenu = project.variant === "menu";
+  const image = project.image ?? "/portfolio/lynx-confidential.webp";
+  const description =
+    locale === "de" ? project.descriptionDe : project.descriptionEn;
+  const tag = locale === "de" ? project.tagDe : project.tagEn;
+  const unavailableLabel =
+    locale === "de"
+      ? "Details auf Anfrage."
+      : "Project details available on request.";
 
   const cardClassName = [
     "project-card",
     styles.card,
-    project.confidential ? "confidential" : "",
+    project.category === "confidential" ? "confidential" : "",
     isQuiz ? styles.quizCard : "",
     isMenu ? styles.menuCard : "",
   ]
@@ -27,7 +40,7 @@ export default function ProjectCard({
     <article
       className={cardClassName}
       data-project-card
-      style={{ "--card-index": index } as React.CSSProperties}
+      style={{ "--card-index": index } as CSSProperties}
     >
       <div
         className={[
@@ -40,7 +53,7 @@ export default function ProjectCard({
         {isQuiz || isMenu ? (
           <>
             <Image
-              src={project.backdropImage ?? project.image}
+              src={project.backdropImage ?? image}
               alt=""
               fill
               aria-hidden="true"
@@ -67,12 +80,13 @@ export default function ProjectCard({
               ) : null}
 
               <div
-                className={`${styles.deviceFrame} ${isMenu ? styles.menuAdminFrame : styles.quizFrame
-                  }`}
+                className={`${styles.deviceFrame} ${
+                  isMenu ? styles.menuAdminFrame : styles.quizFrame
+                }`}
               >
                 <Image
-                  src={project.image}
-                  alt={project.imageAlt ?? ""}
+                  src={image}
+                  alt={project.name}
                   fill
                   sizes="260px"
                   className={styles.deviceImage}
@@ -82,8 +96,8 @@ export default function ProjectCard({
           </>
         ) : (
           <Image
-            src={project.image}
-            alt={project.imageAlt ?? ""}
+            src={image}
+            alt={project.name}
             fill
             sizes="(max-width: 979px) 100vw, 680px"
           />
@@ -91,7 +105,7 @@ export default function ProjectCard({
 
         <div className="project-shade" />
 
-        {project.confidential ? (
+        {project.category === "confidential" ? (
           <div className="confidential-lock" aria-hidden="true">
             🔒
           </div>
@@ -99,20 +113,20 @@ export default function ProjectCard({
       </div>
 
       <div className="project-body">
-        <p className="project-kicker">{project.kicker}</p>
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
+        <p className="project-kicker">{tag}</p>
+        <h3>{project.name}</h3>
+        <p>{description}</p>
         <div className="tag-row">
-          {project.tags.map((tag) => (
+          {project.tech.map((tag) => (
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        {project.href ? (
-          <a href={project.href} target="_blank" rel="noreferrer">
-            {project.linkLabel} <Arrow external />
+        {project.url ? (
+          <a href={project.url} target="_blank" rel="noreferrer">
+            {t.work.visit} <Arrow external />
           </a>
         ) : (
-          <span className="muted-link">{project.linkLabel}</span>
+          <span className="muted-link">{unavailableLabel}</span>
         )}
       </div>
     </article>

@@ -4,8 +4,8 @@
  * public/projects/. Run with: npm run screenshots
  *
  * If a page cannot be reached (no network access, blocked automation,
- * auth wall, etc.) the script leaves a tasteful placeholder in place and
- * records the failure in SCREENSHOTS_NEEDED.md instead of inventing an image.
+ * auth wall, etc.) the script keeps the existing image and records the
+ * failure in SCREENSHOTS_NEEDED.md.
  */
 import { chromium, type Browser } from "playwright";
 import sharp from "sharp";
@@ -89,7 +89,7 @@ async function writeScreenshotsNeeded() {
     "",
     "Automated screenshot capture could not reach the following pages",
     "(no network access in this environment, the site blocked automation,",
-    "or it requires authentication). Placeholders are in place — replace",
+    "or it requires authentication). Replace the affected files",
     "them with real screenshots using the exact filenames below.",
     "",
     ...failures.flatMap((f) => [

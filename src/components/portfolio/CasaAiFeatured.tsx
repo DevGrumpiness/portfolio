@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { publicProjects } from "@/data/projects";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import Arrow from "./Arrow";
 
 function ArchitectureNode({
@@ -26,36 +30,42 @@ function ArchitectureNode({
 }
 
 export default function CasaAiFeatured() {
+  const { locale, t } = useLanguage();
+  const project = publicProjects.find((item) => item.featured);
+
+  if (!project) {
+    return null;
+  }
+
   return (
     <section id="casa-ai" className="section section-featured">
       <div className="page-width featured-grid">
         <div className="section-copy reveal-left" data-reveal>
-          <p className="eyebrow">Latest Project</p>
-          <h2>Casa AI Agent</h2>
-          <p className="lead blue">
-            AI-powered voice reservation system for a real hospitality business.
-          </p>
-          <p>
-            End-to-end production PoC with voice agent, automation workflows,
-            business rules and a deployed reservation dashboard.
-          </p>
+          <p className="eyebrow">{t.work.featuredBadge}</p>
+          <h2>{project.name}</h2>
+          <p className="lead blue">{locale === "de" ? project.tagDe : project.tagEn}</p>
+          <p>{locale === "de" ? project.descriptionDe : project.descriptionEn}</p>
           <div className="button-row compact">
-            <a
-              className="button button-primary"
-              href="https://steadfast-rebirth-production-3301.up.railway.app"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Live Demo <Arrow external />
-            </a>
-            <a
-              className="button button-ghost"
-              href="https://github.com/DevGrumpiness/casa-ai-agent"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub <Arrow external />
-            </a>
+            {project.url ? (
+              <a
+                className="button button-primary"
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t.work.liveDemo} <Arrow external />
+              </a>
+            ) : null}
+            {project.githubUrl ? (
+              <a
+                className="button button-ghost"
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t.hero.github} <Arrow external />
+              </a>
+            ) : null}
           </div>
         </div>
 
@@ -122,7 +132,7 @@ export default function CasaAiFeatured() {
           >
             <div className="dashboard-thumb">
               <Image
-                src="/portfolio/casa-ai-agent.webp"
+                src={project.image ?? "/portfolio/casa-ai-agent.webp"}
                 alt="Casa AI Agent reservation dashboard"
                 fill
                 sizes="(max-width: 900px) 70vw, 260px"

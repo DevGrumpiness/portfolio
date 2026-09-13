@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import type { RefObject } from "react";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import Arrow from "./Arrow";
 
 export default function Hero({
@@ -7,6 +10,8 @@ export default function Hero({
 }: {
   sectionRef: RefObject<HTMLElement | null>;
 }) {
+  const { t } = useLanguage();
+
   return (
     <section id="home" className="hero" ref={sectionRef}>
       <div className="hero-media" aria-hidden="true">
@@ -22,34 +27,18 @@ export default function Hero({
       <div className="hero-overlay" />
       <div className="page-width hero-content">
         <div className="hero-copy" data-reveal>
-          <p className="eyebrow">
-            Web Developer · AI Automation · Real-world Solutions
-          </p>
-          <h1>
-            Building digital solutions that <em>actually work.</em>
-          </h1>
-          <p className="hero-intro">
-            I build modern web applications and AI-powered tools with a focus on
-            real-world use cases, clean code and measurable impact.
-          </p>
+          <p className="eyebrow">{t.hero.eyebrow}</p>
+          <h1>{t.hero.title}</h1>
+          <p className="hero-intro">{t.hero.description}</p>
           <div className="button-row">
             <a className="button button-primary" href="#casa-ai">
-              View my work <Arrow />
-            </a>
-            <a
-              className="button button-ghost"
-              href="https://github.com/DevGrumpiness"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub <Arrow external />
+              {t.hero.viewProjects} <Arrow />
             </a>
           </div>
           <div className="hero-capabilities" aria-label="Core capabilities">
-            <span>▣ Web Applications</span>
-            <span>⌁ AI & Automation</span>
-            <span>◇ Data Annotation</span>
-            <span>◎ Real-world Experience</span>
+            {t.hero.capabilities.map((capability) => (
+              <span key={capability}>{capability}</span>
+            ))}
           </div>
         </div>
       </div>

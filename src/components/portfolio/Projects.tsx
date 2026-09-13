@@ -1,30 +1,48 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { projects } from "@/data/portfolio";
+import {
+  confidentialProjects,
+  publicProjects,
+  type Project,
+} from "@/data/projects";
 import styles from "@/app/projects-scroll.module.css";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import Arrow from "./Arrow";
 import ProjectCard from "./ProjectCard";
 import ProjectVisual from "./ProjectVisual";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const allProjects = [...publicProjects, ...confidentialProjects];
+const showcaseProjectSlugs = [
+  "check24",
+  "muenster-quiz",
+  "lynx",
+  "casa-vazquez",
+] as const;
+const showcaseProjects = showcaseProjectSlugs
+  .map((slug) => allProjects.find((project) => project.slug === slug))
+  .filter((project): project is Project => Boolean(project));
+
 export default function Projects() {
+  const { locale, t } = useLanguage();
   const sectionRef = useRef<HTMLElement | null>(null);
   const pinRef = useRef<HTMLDivElement | null>(null);
   const activeIndexRef = useRef(0);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const projects = showcaseProjects;
 
-  const getScrollDistance = () => {
+  const getScrollDistance = useCallback(() => {
     if (typeof window === "undefined") return 0;
 
     return Math.max(
       window.innerHeight * 1.7,
       (projects.length - 1) * window.innerHeight * 0.95,
     );
-  };
+  }, [projects.length]);
 
   const handleProjectNavClick = (index: number) => {
     if (typeof window === "undefined") return;
@@ -34,7 +52,7 @@ export default function Projects() {
     ).matches;
 
     if (window.innerWidth < 980 || prefersReducedMotion) {
-      const target = document.getElementById(`project-${projects[index].id}`);
+      const target = document.getElementById(`project-${projects[index].slug}`);
       target?.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
@@ -235,7 +253,7 @@ export default function Projects() {
     return () => {
       media.revert();
     };
-  }, []);
+  }, [getScrollDistance]);
 
   return (
     <section
@@ -246,11 +264,11 @@ export default function Projects() {
       <div className={styles.pin} ref={pinRef}>
         <div className={`page-width section-heading ${styles.heading}`}>
           <div>
-            <p className="eyebrow">Selected Work</p>
-            <h2>Recent Projects</h2>
+            <p className="eyebrow">{t.work.heading}</p>
+            <h2>{t.work.otherHeading}</h2>
           </div>
 
-          <p>Real use cases. Real projects. Real impact.</p>
+          <p>{t.work.subheading}</p>
         </div>
 
         <div className={styles.desktopShowcase}>
@@ -258,7 +276,7 @@ export default function Projects() {
             <div className={styles.deck}>
               {projects.map((project, index) => (
                 <ProjectVisual
-                  key={project.id}
+                  key={project.slug}
                   project={project}
                   priority={index === 0}
                 />
@@ -271,38 +289,46 @@ export default function Projects() {
               <article
                 className={styles.detail}
                 data-project-detail
-                key={project.id}
+                key={project.slug}
               >
                 <div className={styles.detailCounter}>
                   {String(index + 1).padStart(2, "0")} /{" "}
                   {String(projects.length).padStart(2, "0")}
                 </div>
 
-                <p className="project-kicker">{project.kicker}</p>
+                <p className="project-kicker">
+                  {locale === "de" ? project.tagDe : project.tagEn}
+                </p>
 
-                <h3>{project.title}</h3>
+                <h3>{project.name}</h3>
 
                 <p className={styles.detailDescription}>
-                  {project.description}
+                  {locale === "de"
+                    ? project.descriptionDe
+                    : project.descriptionEn}
                 </p>
 
                 <div className="tag-row">
-                  {project.tags.map((tag) => (
+                  {project.tech.map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
 
-                {project.href ? (
+                {project.url ? (
                   <a
                     className={styles.projectLink}
-                    href={project.href}
+                    href={project.url}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    {project.linkLabel} <Arrow external />
+                    {t.work.visit} <Arrow external />
                   </a>
                 ) : (
-                  <span className="muted-link">{project.linkLabel}</span>
+                  <span className="muted-link">
+                    {locale === "de"
+                      ? "Details auf Anfrage."
+                      : "Project details available on request."}
+                  </span>
                 )}
               </article>
             ))}
@@ -312,7 +338,7 @@ export default function Projects() {
         <div className={styles.thumbNav} aria-label="Recent projects quick navigation">
           {projects.map((project, index) => (
             <button
-              key={project.id}
+              key={project.slug}
               type="button"
               className={`${styles.thumbButton} ${activeProjectIndex === index ? styles.thumbButtonActive : ""
                 }`}
@@ -322,14 +348,14 @@ export default function Projects() {
               <span className={styles.thumbMeta}>
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className={styles.thumbTitle}>{project.title}</span>
+              <span className={styles.thumbTitle}>{project.name}</span>
             </button>
           ))}
         </div>
 
         <div className={styles.mobileList}>
           {projects.map((project, index) => (
-            <div id={`project-${project.id}`} key={project.id}>
+            <div id={`project-${project.slug}`} key={project.slug}>
               <ProjectCard project={project} index={index} />
             </div>
           ))}

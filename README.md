@@ -18,12 +18,13 @@ Open http://localhost:3000.
 ```
 src/
   app/                 Route, layout, metadata, sitemap/robots, OG image
-  components/          UI sections (Hero, SelectedWork, ProtectedWork, ...)
+  components/          UI sections (Hero, Projects, Experience, Contact, ...)
   config/site.ts        Personal info & external links (single source of truth)
-  data/                 Typed content: projects.ts, experience.ts, technologies.ts
+  data/                 Typed content for projects and portfolio sections
   i18n/                 EN/DE translations + language context/provider
 scripts/
   capture-projects.ts   Playwright screenshot automation
+  smoke-tests.ts        Local browser smoke tests
 public/
   projects/             Project screenshots (webp)
   cv/                   CV PDF goes here
@@ -33,9 +34,8 @@ public/
 
 - **Text/copy**: `src/i18n/translations.ts` (EN and DE side by side).
 - **Projects**: `src/data/projects.ts` — add/edit entries in `publicProjects`
-  or `protectedProjects`. Each project is fully typed.
-- **Experience**: `src/data/experience.ts`.
-- **Technologies**: `src/data/technologies.ts`.
+  or `confidentialProjects`. Each project is fully typed.
+- **Experience / technologies / section rail**: `src/data/portfolio.ts`.
 - **Contact links / email / CV path**: `src/config/site.ts` — do not hardcode
   URLs elsewhere.
 
@@ -76,9 +76,12 @@ Overwrite the files in `public/projects/` with the same filenames (see
 ```bash
 npm run lint
 npm run build
+npm run smoke
 ```
 
-Both must pass with zero errors before deploying.
+All checks should pass before deploying. The smoke tests start a local Next.js
+server, open the site in Chromium, verify the main sections and language switch,
+and check that sitemap/robots use the production domain.
 
 ## Deployment (Vercel)
 
@@ -100,7 +103,6 @@ npx vercel --prod # production deployment
 
 ## Custom domain
 
-In the Vercel project settings → **Domains**, add your domain and follow the
-DNS instructions (A/CNAME record). Update `siteUrl` in
-`src/config/site.ts` to match the final domain once it's live (used for
-metadata, sitemap and OpenGraph URLs).
+The production domain is `https://vazquez.beer`. If the domain changes later,
+update `siteUrl` in `src/config/site.ts`; it is used for metadata, sitemap,
+robots and OpenGraph URLs.

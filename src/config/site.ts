@@ -8,7 +8,7 @@ export const siteConfig = {
   location: "Münster, Germany",
   availableFrom: "October 2026",
   email: "jbmj@outlook.de",
-  siteUrl: "https://example.com", // TODO: replace with the deployed domain
+  siteUrl: "https://vazquez.beer",
   links: {
     github: "https://github.com/DevGrumpiness",
     linkedin:

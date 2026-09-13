@@ -34,10 +34,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
   const setLocale = (next: Locale) => {
     setLocaleState(next);
     window.localStorage.setItem(STORAGE_KEY, next);
-    document.documentElement.lang = next;
   };
 
   const value = useMemo(

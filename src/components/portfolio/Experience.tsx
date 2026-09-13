@@ -1,20 +1,19 @@
+"use client";
+
 import type { CSSProperties } from "react";
 import { experience } from "@/data/portfolio";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 export default function Experience() {
+  const { t } = useLanguage();
+
   return (
     <section id="experience" className="section section-experience">
       <div className="page-width experience-grid">
         <div className="section-copy reveal-left" data-reveal>
-          <p className="eyebrow">Experience</p>
-          <h2>
-            From missions to <em>products.</em>
-          </h2>
-          <p>
-            8+ years across web development, AI/data work and building my own
-            business. Different environments, same focus: solve problems and
-            deliver value.
-          </p>
+          <p className="eyebrow">{t.experience.heading}</p>
+          <h2>{t.experience.title}</h2>
+          <p>{t.experience.body}</p>
         </div>
         <div className="timeline" data-reveal>
           {experience.map((item, index) => (

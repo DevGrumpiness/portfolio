@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Project } from "@/data/portfolio";
+import type { Project } from "@/data/projects";
 import styles from "@/app/projects-scroll.module.css";
 
 export default function ProjectVisual({
@@ -11,31 +11,34 @@ export default function ProjectVisual({
 }) {
   const isQuiz = project.variant === "quiz";
   const isMenu = project.variant === "menu";
+  const image = project.image ?? "/portfolio/lynx-confidential.webp";
 
   return (
     <article className={styles.visualCard} data-project-visual aria-hidden="true">
       {isQuiz || isMenu ? (
         <>
           <Image
-            src={project.backdropImage ?? project.image}
+            src={project.backdropImage ?? image}
             alt=""
             fill
             priority={priority}
             sizes="(max-width: 979px) 100vw, 720px"
-            className={`${styles.visualBackdrop} ${isQuiz ? styles.quizBackdrop : styles.menuBackdrop
-              }`}
+            className={`${styles.visualBackdrop} ${
+              isQuiz ? styles.quizBackdrop : styles.menuBackdrop
+            }`}
           />
 
           <div
-            className={`${styles.visualBackdropShade} ${isQuiz ? styles.quizBackdropShade : styles.menuBackdropShade
-              }`}
+            className={`${styles.visualBackdropShade} ${
+              isQuiz ? styles.quizBackdropShade : styles.menuBackdropShade
+            }`}
           />
 
           {isQuiz ? (
             <div className={styles.quizVisualStage}>
               <div className={`${styles.device} ${styles.quizDevice}`}>
                 <Image
-                  src={project.image}
+                  src={image}
                   alt=""
                   fill
                   priority={priority}
@@ -63,7 +66,7 @@ export default function ProjectVisual({
 
               <div className={`${styles.device} ${styles.menuAdminDevice}`}>
                 <Image
-                  src={project.image}
+                  src={image}
                   alt=""
                   fill
                   priority={priority}
@@ -76,7 +79,7 @@ export default function ProjectVisual({
         </>
       ) : (
         <Image
-          src={project.image}
+          src={image}
           alt=""
           fill
           priority={priority}
@@ -87,7 +90,7 @@ export default function ProjectVisual({
 
       <div className={styles.visualShade} />
 
-      {project.confidential ? (
+      {project.category === "confidential" ? (
         <div className={styles.visualLock} aria-hidden="true">
           🔒
         </div>
