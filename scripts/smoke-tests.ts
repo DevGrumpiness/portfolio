@@ -91,7 +91,7 @@ async function checkHomePage(browser: Browser) {
     .getByRole("heading", { name: /Web Developer building/i })
     .waitFor();
 
-  for (const id of ["home", "casa-ai", "projects", "stack", "experience", "ai-data", "contact"]) {
+  for (const id of ["home", "casa-ai", "projects", "relaunch", "stack", "experience", "ai-data", "contact"]) {
     assert(await page.locator(`#${id}`).count(), `Missing #${id} section`);
   }
 

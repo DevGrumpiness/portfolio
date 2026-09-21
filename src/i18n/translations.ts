@@ -34,6 +34,14 @@ export interface Translations {
     sources: string;
     otherHeading: string;
   };
+  relaunch: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    body: string;
+    note: string;
+    cta: string;
+  };
   experience: {
     heading: string;
     title: string;
@@ -110,6 +118,15 @@ export const translations: Record<Locale, Translations> = {
         "Selected projects cannot be presented publicly due to contractual and security requirements. Publicly documented information and non-sensitive technical context are shown where possible.",
       sources: "Public sources",
       otherHeading: "Other Projects",
+    },
+    relaunch: {
+      eyebrow: "Web Relaunch",
+      heading: "Old site? Time for a fresh menu.",
+      lead: "New website — or a tasty redesign of the old one.",
+      body:
+        "If your site loads slow, looks dated, or just doesn't represent you anymore, I'll rebuild it from scratch: fast, modern, mobile-first, and easy to keep fresh long after launch.",
+      note: "First relaunch projects are currently cooking — case studies coming soon.",
+      cta: "Let's talk relaunch",
     },
     experience: {
       heading: "Experience",
@@ -189,6 +206,15 @@ export const translations: Record<Locale, Translations> = {
         "Ausgewählte Projekte können aus vertraglichen und sicherheitsrelevanten Gründen nicht öffentlich gezeigt werden. Öffentlich dokumentierte Informationen und unkritischer technischer Kontext werden, soweit möglich, dargestellt.",
       sources: "Öffentliche Quellen",
       otherHeading: "Weitere Projekte",
+    },
+    relaunch: {
+      eyebrow: "Website-Relaunch",
+      heading: "Alte Website? Zeit für eine frische Karte.",
+      lead: "Neue Website — oder ein schmackhaftes Redesign der alten.",
+      body:
+        "Wenn Ihre Seite langsam lädt, veraltet wirkt oder Sie einfach nicht mehr richtig repräsentiert, baue ich sie von Grund auf neu: schnell, modern, mobile-first und danach leicht selbst aktuell zu halten.",
+      note: "Die ersten Relaunch-Projekte sind gerade in Arbeit — Referenzen folgen in Kürze.",
+      cta: "Relaunch anfragen",
     },
     experience: {
       heading: "Erfahrung",

@@ -2,10 +2,11 @@ export const sections = [
   { id: "home", number: "01", label: "Home" },
   { id: "casa-ai", number: "02", label: "Featured" },
   { id: "projects", number: "03", label: "Projects" },
-  { id: "stack", number: "04", label: "Tech Stack" },
-  { id: "experience", number: "05", label: "Experience" },
-  { id: "ai-data", number: "06", label: "AI & Data" },
-  { id: "contact", number: "07", label: "Contact" },
+  { id: "relaunch", number: "04", label: "Web Relaunch" },
+  { id: "stack", number: "05", label: "Tech Stack" },
+  { id: "experience", number: "06", label: "Experience" },
+  { id: "ai-data", number: "07", label: "AI & Data" },
+  { id: "contact", number: "08", label: "Contact" },
 ] as const;
 
 export const stack = [

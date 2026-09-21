@@ -12,6 +12,7 @@ import Hero from "./Hero";
 import Projects from "./Projects";
 import SectionRail from "./SectionRail";
 import TechStack from "./TechStack";
+import WebRelaunch from "./WebRelaunch";
 
 export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState("home");
@@ -33,6 +34,7 @@ export default function PortfolioPage() {
         <Hero sectionRef={heroRef} />
         <CasaAiFeatured />
         <Projects />
+        <WebRelaunch />
         <TechStack />
         <Experience />
         <AiData />
