@@ -121,8 +121,8 @@ export const translations: Record<Locale, Translations> = {
     },
     relaunch: {
       eyebrow: "Web Relaunch",
-      heading: "Old site? Time for a fresh menu.",
-      lead: "New website — or a tasty redesign of the old one.",
+      heading: "Outdated website? Time for a fresh start.",
+      lead: "Your business deserves a modern web presence that impresses.",
       body:
         "If your site loads slow, looks dated, or just doesn't represent you anymore, I'll rebuild it from scratch: fast, modern, mobile-first, and easy to keep fresh long after launch.",
       note: "First relaunch projects are currently cooking — case studies coming soon.",
@@ -209,8 +209,8 @@ export const translations: Record<Locale, Translations> = {
     },
     relaunch: {
       eyebrow: "Website-Relaunch",
-      heading: "Alte Website? Zeit für eine frische Karte.",
-      lead: "Neue Website — oder ein schmackhaftes Redesign der alten.",
+      heading: "Alte Website? Zeit für einen Neuanfang.",
+      lead: "Dein Unternehmen verdient eine moderne Webpräsenz, die überzeugt.",
       body:
         "Wenn Ihre Seite langsam lädt, veraltet wirkt oder Sie einfach nicht mehr richtig repräsentiert, baue ich sie von Grund auf neu: schnell, modern, mobile-first und danach leicht selbst aktuell zu halten.",
       note: "Die ersten Relaunch-Projekte sind gerade in Arbeit — Referenzen folgen in Kürze.",
