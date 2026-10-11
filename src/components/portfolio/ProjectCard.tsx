@@ -83,9 +83,8 @@ export default function ProjectCard({
               ) : null}
 
               <div
-                className={`${styles.device} ${
-                  isMenu ? styles.menuAdminDevice : styles.quizDevice
-                }`}
+                className={`${styles.device} ${isMenu ? styles.menuAdminDevice : styles.quizDevice
+                  }`}
               >
                 <Image
                   src={image}
