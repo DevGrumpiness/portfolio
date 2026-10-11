@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import type { Locale } from "@/i18n/translations";
 import Arrow from "./Arrow";
@@ -11,7 +12,18 @@ export default function Header() {
   return (
     <header className="top-nav">
       <a className="brand" href="#home" aria-label="Back to top">
-        José Vazquez
+        <Image
+          className="brand-logo"
+          src="/portfolio/vz-monogram.png"
+          alt=""
+          width={103}
+          height={55}
+          priority
+        />
+        <span>
+          José <span className="brand-accent">V</span>azque
+          <span className="brand-accent">z</span>
+        </span>
       </a>
       <nav className="nav-links" aria-label="Primary navigation">
         <a href="#home">Home</a>

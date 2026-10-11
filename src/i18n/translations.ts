@@ -39,8 +39,11 @@ export interface Translations {
     heading: string;
     lead: string;
     body: string;
-    note: string;
     cta: string;
+  };
+  meta: {
+    title: string;
+    description: string;
   };
   experience: {
     heading: string;
@@ -124,8 +127,12 @@ export const translations: Record<Locale, Translations> = {
       lead: "Your business deserves a modern web presence that impresses.",
       body:
         "If your site loads slow, looks dated, or just doesn't represent you anymore, I'll rebuild it from scratch: fast, modern, mobile-first, and easy to keep fresh long after launch.",
-      note: "First relaunch projects are currently cooking — case studies coming soon.",
       cta: "Let's talk relaunch",
+    },
+    meta: {
+      title: "José Guerrero Vazquez | Web Developer & AI Automation",
+      description:
+        "Web Developer building modern web applications and practical AI-powered tools with React, Vue, TypeScript, Next.js and FastAPI.",
     },
     experience: {
       heading: "Experience",
@@ -211,8 +218,12 @@ export const translations: Record<Locale, Translations> = {
       lead: "Dein Unternehmen verdient eine moderne Webpräsenz, die überzeugt.",
       body:
         "Wenn Ihre Seite langsam lädt, veraltet wirkt oder Sie einfach nicht mehr richtig repräsentiert, baue ich sie von Grund auf neu: schnell, modern, mobile-first und danach leicht selbst aktuell zu halten.",
-      note: "Die ersten Relaunch-Projekte sind gerade in Arbeit — Referenzen folgen in Kürze.",
       cta: "Relaunch anfragen",
+    },
+    meta: {
+      title: "José Guerrero Vazquez | Webentwickler & KI-Automatisierung",
+      description:
+        "Webentwickler für moderne Webanwendungen und praxisnahe KI-gestützte Tools mit React, Vue, TypeScript, Next.js und FastAPI.",
     },
     experience: {
       heading: "Erfahrung",

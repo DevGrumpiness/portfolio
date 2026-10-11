@@ -35,7 +35,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    const { meta } = translations[locale];
     document.documentElement.lang = locale;
+    document.title = meta.title;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", meta.description);
   }, [locale]);
 
   const setLocale = (next: Locale) => {

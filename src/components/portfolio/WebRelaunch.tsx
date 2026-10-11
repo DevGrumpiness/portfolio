@@ -36,7 +36,6 @@ export default function WebRelaunch() {
               <div className="relaunch-skeleton relaunch-skeleton-short" />
             </div>
           </div>
-          <p className="muted-link relaunch-note">{t.relaunch.note}</p>
         </div>
       </div>
     </section>

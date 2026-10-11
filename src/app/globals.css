@@ -79,8 +79,21 @@ a {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
   font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+.brand-logo {
+  width: auto;
+  height: 26px;
+}
+
+.brand-accent {
+  color: #d2b18a;
 }
 
 .nav-links {
@@ -643,11 +656,6 @@ a {
 
 .relaunch-skeleton-short {
   width: 38%;
-}
-
-.relaunch-note {
-  margin-top: 16px;
-  text-align: center;
 }
 
 .section-projects,
