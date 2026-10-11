@@ -5,6 +5,14 @@ import type { RefObject } from "react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import Arrow from "./Arrow";
 
+function renderHighlightedTitle(title: string) {
+  return title
+    .split("*")
+    .map((segment, index) =>
+      index % 2 === 1 ? <em key={index}>{segment}</em> : segment,
+    );
+}
+
 export default function Hero({
   sectionRef,
 }: {
@@ -28,7 +36,7 @@ export default function Hero({
       <div className="page-width hero-content">
         <div className="hero-copy" data-reveal>
           <p className="eyebrow">{t.hero.eyebrow}</p>
-          <h1>{t.hero.title}</h1>
+          <h1>{renderHighlightedTitle(t.hero.title)}</h1>
           <p className="hero-intro">{t.hero.description}</p>
           <div className="button-row">
             <a className="button button-primary" href="#casa-ai">

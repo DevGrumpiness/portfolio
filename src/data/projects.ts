@@ -35,7 +35,6 @@ export const publicProjects: Project[] = [
     name: "Casa AI Agent",
     category: "public",
     featured: true,
-    url: "https://steadfast-rebirth-production-3301.up.railway.app",
     githubUrl: "https://github.com/DevGrumpiness/casa-ai-agent",
     image: "/projects/casa-ai-agent.webp",
     imageMobile: "/projects/casa-ai-agent-mobile.webp",

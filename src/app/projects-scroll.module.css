@@ -59,7 +59,7 @@
   width: min(640px, calc(100% - 120px));
   height: 100%;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 22px;
   background: #0b1219;
   box-shadow:
@@ -151,7 +151,7 @@
   display: grid;
   place-items: center;
   transform: translate(-50%, -50%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 20px;
   background: rgba(7, 11, 16, 0.34);
   backdrop-filter: blur(10px);

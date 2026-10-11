@@ -86,11 +86,10 @@ export const translations: Record<Locale, Translations> = {
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Web Developer · AI Automation · Real-world Solutions",
-      title:
-        "Web Developer building production-ready web applications and AI-powered tools.",
+      eyebrow: "Web Development + AI Automation",
+      title: "Building *production-ready* web applications and AI-powered tools.",
       description:
-        "I build with React, Vue, TypeScript and Next.js, and I ship practical web applications.",
+        "I build with React, Vue, TypeScript and Next.js, and I ship practical web applications that solve real problems.",
       viewProjects: "View Projects",
       github: "GitHub",
       downloadCv: "Download CV",
@@ -175,11 +174,11 @@ export const translations: Record<Locale, Translations> = {
       contact: "Kontakt",
     },
     hero: {
-      eyebrow: "Webentwickler · KI-Automatisierung · Praxisnahe Lösungen",
+      eyebrow: "Webentwicklung + KI-Automatisierung",
       title:
-        "Webentwickler für produktionsreife Webanwendungen und KI-gestützte Tools.",
+        "*Produktionsreife* Webanwendungen und KI-gestützte Tools entwickeln.",
       description:
-        "Ich entwickle mit React, Vue, TypeScript und Next.js und setze praxisnahe Web-Applikationen um.",
+        "Ich entwickle mit React, Vue, TypeScript und Next.js und setze praxisnahe Web-Applikationen um, die echte Probleme lösen.",
       viewProjects: "Projekte ansehen",
       github: "GitHub",
       downloadCv: "Lebenslauf herunterladen",
