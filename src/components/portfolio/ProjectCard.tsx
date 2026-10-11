@@ -45,7 +45,6 @@ export default function ProjectCard({
       <div
         className={[
           "project-media",
-          isQuiz || isMenu ? styles.showcaseMedia : "",
         ]
           .filter(Boolean)
           .join(" ")}
@@ -58,17 +57,21 @@ export default function ProjectCard({
               fill
               aria-hidden="true"
               sizes="(max-width: 979px) 100vw, 680px"
-              className={styles.showcaseBackdrop}
+              className={styles.visualBackdrop}
             />
-            <div className={styles.showcaseBackdropShade} />
+            <div
+              className={
+                isMenu ? styles.menuBackdropShade : styles.quizBackdropShade
+              }
+            />
 
             <div
               className={
-                isMenu ? styles.menuScreens : styles.quizScreenContainer
+                isMenu ? styles.menuVisualStage : styles.quizVisualStage
               }
             >
               {isMenu && project.secondaryImage ? (
-                <div className={`${styles.deviceFrame} ${styles.menuGuestFrame}`}>
+                <div className={`${styles.device} ${styles.menuGuestDevice}`}>
                   <Image
                     src={project.secondaryImage}
                     alt={project.secondaryImageAlt ?? ""}
@@ -80,8 +83,8 @@ export default function ProjectCard({
               ) : null}
 
               <div
-                className={`${styles.deviceFrame} ${
-                  isMenu ? styles.menuAdminFrame : styles.quizFrame
+                className={`${styles.device} ${
+                  isMenu ? styles.menuAdminDevice : styles.quizDevice
                 }`}
               >
                 <Image

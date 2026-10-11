@@ -175,8 +175,7 @@ export const translations: Record<Locale, Translations> = {
     },
     hero: {
       eyebrow: "Webentwicklung + KI-Automatisierung",
-      title:
-        "*Produktionsreife* Webanwendungen und KI-gestützte Tools entwickeln.",
+      title: "Moderne *Webentwicklung*, die funktioniert.",
       description:
         "Ich entwickle mit React, Vue, TypeScript und Next.js und setze praxisnahe Web-Applikationen um, die echte Probleme lösen.",
       viewProjects: "Projekte ansehen",

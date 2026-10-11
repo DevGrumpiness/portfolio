@@ -32,11 +32,25 @@ export default function Contact({
         <div className="button-row centered">
           <a
             className="button button-primary"
+            href={`mailto:${siteConfig.email}`}
+          >
+            {t.contact.email} <Arrow />
+          </a>
+          <a
+            className="button button-ghost"
             href={siteConfig.links.linkedin}
             target="_blank"
             rel="noreferrer"
           >
-            {t.contact.getInTouch} <Arrow external />
+            {t.contact.linkedin} <Arrow external />
+          </a>
+          <a
+            className="button button-ghost"
+            href={siteConfig.links.cv}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t.contact.downloadCv} <Arrow external />
           </a>
         </div>
       </div>

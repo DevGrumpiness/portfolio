@@ -49,8 +49,8 @@ export const publicProjects: Project[] = [
       "n8n",
       "Vapi",
     ],
-    tagEn: "AI voice reservation PoC",
-    tagDe: "KI-Sprachreservierung PoC",
+    tagEn: "Automated phone reservations with capacity rules",
+    tagDe: "Automatisierte Telefonreservierungen mit Kapazitätsregeln",
     descriptionEn:
       "AI-powered voice reservation system built as an end-to-end production PoC. A Vapi voice agent takes phone reservations through n8n and FastAPI, applying business rules for party size and daily capacity before persisting to PostgreSQL. A Next.js admin dashboard lets staff review, confirm and manually create reservations against the same FastAPI backend.",
     descriptionDe:
