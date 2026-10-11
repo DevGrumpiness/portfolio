@@ -8,7 +8,7 @@
   --border: rgba(255, 255, 255, 0.1);
   --accent: #5aa7ff;
   --accent-strong: #2b8eff;
-  --warm: #c47b3d;
+  --warm: #d2b18a;
 }
 
 @theme inline {
@@ -93,7 +93,7 @@ a {
 }
 
 .brand-accent {
-  color: #d2b18a;
+  color: var(--warm);
 }
 
 .nav-links {
@@ -447,7 +447,7 @@ a {
 }
 
 .section-copy .lead.warm {
-  color: #e0a468;
+  color: var(--warm);
 }
 
 .architecture {
@@ -594,7 +594,7 @@ a {
 
 .section-relaunch {
   padding: 72px 0 78px;
-  background: radial-gradient(circle at 18% 40%, rgba(196, 123, 61, .15), transparent 38%), #071019;
+  background: radial-gradient(circle at 18% 40%, rgba(210, 177, 138, .15), transparent 38%), #071019;
 }
 
 .relaunch-grid {
@@ -645,13 +645,13 @@ a {
 .relaunch-skeleton {
   height: 12px;
   border-radius: 6px;
-  background: linear-gradient(90deg, rgba(196, 123, 61, .18), rgba(255, 255, 255, .05));
+  background: linear-gradient(90deg, rgba(210, 177, 138, .18), rgba(255, 255, 255, .05));
 }
 
 .relaunch-skeleton-title {
   height: 20px;
   width: 55%;
-  background: linear-gradient(90deg, rgba(196, 123, 61, .32), rgba(255, 255, 255, .06));
+  background: linear-gradient(90deg, rgba(210, 177, 138, .32), rgba(255, 255, 255, .06));
 }
 
 .relaunch-skeleton-short {
