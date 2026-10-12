@@ -28,8 +28,8 @@ export default function Header() {
       <nav className="nav-links" aria-label="Primary navigation">
         <a href="#home">Home</a>
         <a href="#projects">{t.nav.work}</a>
+        <a href="#ai-solutions">{t.nav.aiSolutions}</a>
         <a href="#experience">{t.nav.experience}</a>
-        <a href="#ai-data">AI & Data</a>
       </nav>
       <button
         className="lang-toggle"

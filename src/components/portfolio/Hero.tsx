@@ -39,7 +39,7 @@ export default function Hero({
           <h1>{renderHighlightedTitle(t.hero.title)}</h1>
           <p className="hero-intro">{t.hero.description}</p>
           <div className="button-row">
-            <a className="button button-primary" href="#casa-ai">
+            <a className="button button-primary" href="#projects">
               {t.hero.viewProjects} <Arrow />
             </a>
           </div>

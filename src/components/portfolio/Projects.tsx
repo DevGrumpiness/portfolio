@@ -18,6 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const allProjects = [...publicProjects, ...confidentialProjects];
 const showcaseProjectSlugs = [
+  "casa-ai-agent",
   "check24",
   "muenster-quiz",
   "lynx",
@@ -322,6 +323,15 @@ export default function Projects() {
                     rel="noreferrer"
                   >
                     {t.work.visit} <Arrow external />
+                  </a>
+                ) : project.githubUrl ? (
+                  <a
+                    className={styles.projectLink}
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t.work.code} <Arrow external />
                   </a>
                 ) : (
                   <span className="muted-link">

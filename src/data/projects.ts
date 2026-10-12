@@ -36,7 +36,7 @@ export const publicProjects: Project[] = [
     category: "public",
     featured: true,
     githubUrl: "https://github.com/DevGrumpiness/casa-ai-agent",
-    image: "/projects/casa-ai-agent.webp",
+    image: "/projects/casa-ai-voice.webp",
     imageMobile: "/projects/casa-ai-agent-mobile.webp",
     role: "Fullstack Development & AI Voice Integration",
     tech: [
@@ -52,9 +52,9 @@ export const publicProjects: Project[] = [
     tagEn: "Automated phone reservations with capacity rules",
     tagDe: "Automatisierte Telefonreservierungen mit Kapazitätsregeln",
     descriptionEn:
-      "AI-powered voice reservation system built as an end-to-end production PoC. A Vapi voice agent takes phone reservations through n8n and FastAPI, applying business rules for party size and daily capacity before persisting to PostgreSQL. A Next.js admin dashboard lets staff review, confirm and manually create reservations against the same FastAPI backend.",
+      "AI voice agent that takes phone reservations around the clock. Vapi, n8n and FastAPI check party size and daily capacity before saving to PostgreSQL; staff review and confirm bookings in a Next.js admin dashboard.",
     descriptionDe:
-      "KI-gestütztes Sprachreservierungssystem als End-to-End-Produktions-PoC. Ein Vapi-Sprachagent nimmt Telefonreservierungen über n8n und FastAPI entgegen und wendet dabei Geschäftsregeln für Personenzahl und Tageskapazität an, bevor die Daten in PostgreSQL gespeichert werden. Ein Next.js-Admin-Dashboard ermöglicht Mitarbeitenden die Prüfung, Bestätigung und manuelle Erstellung von Reservierungen über dasselbe FastAPI-Backend.",
+      "KI-Sprachagent, der Telefonreservierungen rund um die Uhr annimmt. Vapi, n8n und FastAPI prüfen Personenzahl und Tageskapazität, bevor die Daten in PostgreSQL landen; im Next.js-Dashboard prüft und bestätigt das Team die Buchungen.",
   },
   {
     slug: "casa-vazquez",

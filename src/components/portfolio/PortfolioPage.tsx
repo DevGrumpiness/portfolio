@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { usePortfolioEffects } from "@/hooks/usePortfolioEffects";
 import AiData from "./AiData";
-import CasaAiFeatured from "./CasaAiFeatured";
+import AiSolutions from "./AiSolutions";
 import Contact from "./Contact";
 import Experience from "./Experience";
 import Footer from "./Footer";
@@ -32,9 +32,9 @@ export default function PortfolioPage() {
 
       <main>
         <Hero sectionRef={heroRef} />
-        <CasaAiFeatured />
         <Projects />
         <WebRelaunch />
+        <AiSolutions />
         <TechStack />
         <Experience />
         <AiData />
