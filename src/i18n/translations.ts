@@ -15,7 +15,6 @@ export interface Translations {
     title: string;
     description: string;
     viewProjects: string;
-    github: string;
     downloadCv: string;
     capabilities: string[];
   };
@@ -25,7 +24,6 @@ export interface Translations {
     role: string;
     tech: string;
     visit: string;
-    code: string;
     confidentialHeading: string;
     confidentialSubheading: string;
     sources: string;
@@ -115,7 +113,6 @@ export const translations: Record<Locale, Translations> = {
       description:
         "I build with React, Vue, TypeScript and Next.js, and I ship practical web applications that solve real problems.",
       viewProjects: "View Projects",
-      github: "GitHub",
       downloadCv: "Download CV",
       capabilities: [
         "▣ Web Applications",
@@ -131,7 +128,6 @@ export const translations: Record<Locale, Translations> = {
       role: "Role",
       tech: "Tech",
       visit: "Visit project",
-      code: "View code",
       confidentialHeading: "Public Sector & Confidential Work",
       confidentialSubheading:
         "Selected projects cannot be presented publicly due to contractual and security requirements. Publicly documented information and non-sensitive technical context are shown where possible.",
@@ -263,7 +259,6 @@ export const translations: Record<Locale, Translations> = {
       description:
         "Ich entwickle mit React, Vue, TypeScript und Next.js und setze praxisnahe Web-Applikationen um, die echte Probleme lösen.",
       viewProjects: "Projekte ansehen",
-      github: "GitHub",
       downloadCv: "Lebenslauf herunterladen",
       capabilities: [
         "▣ Webanwendungen",
@@ -274,16 +269,15 @@ export const translations: Record<Locale, Translations> = {
     work: {
       heading: "Ausgewählte Projekte",
       subheading:
-        "Produktivprojekte und KI-Systeme, die ich vollständig konzipiert, gebaut und ausgerollt habe.",
+        "Produktivprojekte und KI-Systeme, die ich vollständig konzipiert, entwickelt und ausgerollt habe.",
       role: "Rolle",
       tech: "Tech",
       visit: "Projekt ansehen",
-      code: "Code ansehen",
       confidentialHeading: "Öffentlicher Sektor & vertrauliche Projekte",
       confidentialSubheading:
         "Ausgewählte Projekte können aus vertraglichen und sicherheitsrelevanten Gründen nicht öffentlich gezeigt werden. Öffentlich dokumentierte Informationen und unkritischer technischer Kontext werden, soweit möglich, dargestellt.",
       sources: "Öffentliche Quellen",
-      otherHeading: "Gebaut und im Einsatz.",
+      otherHeading: "Für Kunden entwickelt.",
     },
     relaunch: {
       eyebrow: "Website-Relaunch",
@@ -359,9 +353,9 @@ export const translations: Record<Locale, Translations> = {
     },
     experience: {
       heading: "Erfahrung",
-      title: "Von Einsätzen zu Produkten.",
+      title: "Auf den Punkt.",
       body:
-        "8+ Jahre in Webentwicklung, KI-/Datenarbeit und dem Aufbau eigener Geschäftslösungen. Unterschiedliche Umfelder, gleicher Fokus: Probleme lösen und Wert liefern.",
+        "8+ Jahre in Webentwicklung, KI-/Datenarbeit und dem Aufbau eigener Geschäftslösungen. Unterschiedliche Umfelder, gleicher Fokus: Probleme lösen und Mehrwert liefern.",
     },
     technologies: {
       heading: "Kern-Stack",

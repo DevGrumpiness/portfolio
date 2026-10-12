@@ -324,15 +324,6 @@ export default function Projects() {
                   >
                     {t.work.visit} <Arrow external />
                   </a>
-                ) : project.githubUrl ? (
-                  <a
-                    className={styles.projectLink}
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {t.work.code} <Arrow external />
-                  </a>
                 ) : (
                   <span className="muted-link">
                     {locale === "de"

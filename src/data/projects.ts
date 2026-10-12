@@ -12,7 +12,6 @@ export interface Project {
   category: ProjectCategory;
   featured?: boolean;
   url?: string;
-  githubUrl?: string;
   image?: string;
   imageMobile?: string;
   backdropImage?: string;
@@ -35,7 +34,6 @@ export const publicProjects: Project[] = [
     name: "Casa AI Agent",
     category: "public",
     featured: true,
-    githubUrl: "https://github.com/DevGrumpiness/casa-ai-agent",
     image: "/projects/casa-ai-voice.webp",
     imageMobile: "/projects/casa-ai-agent-mobile.webp",
     role: "Fullstack Development & AI Voice Integration",

@@ -10,7 +10,6 @@ export const siteConfig = {
   email: "jbmj@outlook.de",
   siteUrl: "https://vazquez.beer",
   links: {
-    github: "https://github.com/DevGrumpiness",
     linkedin:
       "https://www.linkedin.com/in/jos%C3%A9-benjamin-m-j-guerrero-vazquez-30369b14b/",
     cv: "/cv/Jose-Guerrero-Vazquez-CV.pdf",
